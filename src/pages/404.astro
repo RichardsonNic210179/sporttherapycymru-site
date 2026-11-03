@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { business } from '../data/site.js';
+---
+
+<BaseLayout
+  title="Page not found | Sports Massage Therapy Cymru"
+  description="This page is not on the Sports Massage Therapy Cymru site. Go back to the homepage or book a sports massage in Cardiff."
+>
+  <section class="page-hero">
+    <div class="wrap">
+      <p class="kicker">Sports Massage Therapy Cymru</p>
+      <h1>Page not found</h1>
+      <p class="lede">This page is not available. You can go back to the homepage or book a session.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="/">Back to homepage</a>
+        <a class="btn btn-line" href={business.booking}>Book now</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

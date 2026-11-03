@@ -1,0 +1,32 @@
+/* Design tokens for Sports Massage Therapy Cymru (B2 Performance).
+   Brand rose #B88375 is decorative only. Never use it for text. */
+:root {
+  --ink: #0f1113;
+  --panel: #181b1f;
+  --panel2: #20242a;
+  --line: #2c3138;
+  --text: #f3efea;
+  --muted: #b3ada6;
+  --copper: #e3a587;
+  --copper-hover: #edbba2;
+  --rose: #b88375; /* decorative only: marks, rules, fills. Not for text. */
+  --bone: #efe9e3;
+  --bone-ink: #15171a;
+  --bone-muted: #4d4741;
+  --copper-text: #8a5646;
+  --footer: #08090a;
+  --s1: 4px;
+  --s2: 8px;
+  --s3: 12px;
+  --s4: 16px;
+  --s5: 24px;
+  --s6: 32px;
+  --s7: 48px;
+  --s8: 64px;
+  --s9: 96px;
+  --s10: 128px;
+  --r: 4px;
+  --r-sm: 2px;
+  --cond: "Barlow Condensed", "Oswald", Impact, sans-serif;
+  --sans: "Inter", system-ui, sans-serif;
+}

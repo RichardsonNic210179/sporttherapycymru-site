@@ -1,0 +1,279 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { bio, business, fromPrice, prices, reviews, routes, treatments } from '../data/site.js';
+
+const homePrices = prices.filter((price) => price.onHomepage);
+const ninetyFrom = Math.min(...prices.filter((price) => price.minutes === 90).map((price) => price.amount));
+
+const title = 'Sports massage in Cardiff | Sports Massage Therapy Cymru';
+const description =
+  'Sports massage in Cardiff for injury recovery and prevention. Book Sports Massage Therapy Cymru in Birchgrove from £45, open 7 days.';
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="hero">
+    <div class="hero-photo">
+      <img
+        src="/img/gallery-hamstring-stretch.jpg"
+        alt="Nic stretching a client's hamstring on the treatment table"
+        width="1400"
+        height="1750"
+        fetchpriority="high"
+      />
+    </div>
+    <div class="wrap">
+      <div class="hero-copy">
+        <p class="kicker">{business.name} · Cardiff</p>
+        <h1>Sports massage Cardiff<span>for injury recovery &amp; prevention</span></h1>
+        <p class="lede">
+          Treatment for runners, <span class="nw">gym-goers</span>, footballers, rugby players, CrossFitters, Hyroxers and more. I help the people of Cardiff &amp; South Wales move better and recover faster.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href={business.booking}>
+            Book now
+            <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.4" fill="none" />
+            </svg>
+          </a>
+          <a class="btn btn-line" href={routes.treatments}>View treatments</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-tag"><b>Birchgrove, Cardiff</b>Purpose-built treatment room</div>
+  </section>
+
+  <section class="stats" aria-label="At a glance">
+    <ul class="wrap">
+      <li><div class="n">200+<small>reviews</small></div><p>Five-star rated on Google</p></li>
+      <li><div class="n">7<small>days</small></div><p>Open every day from 8:30am</p></li>
+      <li><div class="n">4<small>therapies</small></div><p>Combined to suit your goals</p></li>
+      <li><div class="n">£{fromPrice}</div><p>From, every treatment included</p></li>
+    </ul>
+  </section>
+
+  <section class="block" id="treatments" aria-labelledby="t-h" style="border-top:1px solid var(--line)">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="kicker">Treatments</p>
+          <h2 id="t-h">Built for how you train</h2>
+        </div>
+        <p>Sports massage isn't just for when you're injured. It reduces soreness, speeds up muscle repair and keeps your joints mobile.</p>
+      </div>
+      <ul class="tiles">
+        {
+          treatments.map((item) => (
+            <li>
+              <a class="tile" href={item.href}>
+                <div class="ph">
+                  <img src={item.image} alt="" width="1400" height="1750" loading="lazy" />
+                  <span class="num">{item.num}</span>
+                </div>
+                <div class="bd">
+                  <h3>{item.title}</h3>
+                  <p>{item.card}</p>
+                  <span class="go">
+                    Explore
+                    <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.4" fill="none" />
+                    </svg>
+                  </span>
+                </div>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="block about" id="about" aria-labelledby="a-h">
+    <div class="wrap about-grid">
+      <div class="about-ph">
+        <img
+          src="/img/gallery-nic-portrait-smiling-arms-crossed.jpg"
+          alt="Nic, the therapist, standing in front of the Sports Massage Therapy Cymru logo wall"
+          width="1400"
+          height="1750"
+          loading="lazy"
+        />
+        <div class="badge"><b>Hi, I'm Nic</b><span>Level 4 Massage Therapist</span></div>
+      </div>
+      <div>
+        <p class="kicker">About</p>
+        <h2 id="a-h">Recovery starts here</h2>
+        <p class="big">{bio[0]}</p>
+        <p>{bio[1]}</p>
+        <ul class="chips">
+          <li>Sport massage</li>
+          <li>Dry cupping</li>
+          <li>Myofascial release</li>
+          <li>Stretching</li>
+          <li>Dry needling</li>
+        </ul>
+        <a class="btn btn-dark" href={routes.about}>About Nic</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block reviews" id="reviews" aria-labelledby="r-h">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="kicker">Reviews</p>
+          <h2 id="r-h">What clients say</h2>
+          <p class="g-rating"><span class="star" aria-hidden="true">★</span> Over 200 five-star <span class="nw">Google reviews</span></p>
+        </div>
+        <div class="rev-actions">
+          <a class="btn btn-line" href={routes.reviews}>Read all reviews</a>
+          <a class="g-link" href={business.googleProfile} target="_blank" rel="noopener">
+            See all on Google<span class="vh"> (opens in a new tab)</span> <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+      <!-- Reviews are plain crawlable HTML, copied word for word. No Review or AggregateRating schema. -->
+      <div class="reviews-grid">
+        {
+          reviews.map((review) => (
+            <figure class="review">
+              <div class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
+              <blockquote>
+                <p>{review.text}</p>
+              </blockquote>
+              <figcaption>
+                <cite>{review.name}</cite>
+                <span class="rv-meta">
+                  <span class="g-mark" aria-hidden="true">G</span>
+                  Google review
+                  <span class="rv-dot" aria-hidden="true">·</span>
+                  <span class="rv-date">{review.when}</span>
+                </span>
+              </figcaption>
+            </figure>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="block prices" id="prices" aria-labelledby="p-h">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="kicker">Prices</p>
+          <h2 id="p-h">Simple, <span class="nw">all-inclusive</span> prices</h2>
+        </div>
+        <p>Every price includes all treatments. Choose the length that suits you.</p>
+      </div>
+      <div class="p-rows">
+        {
+          homePrices.map((price) => (
+            <div class="p-row">
+              <span class="dur">{price.minutes} mins</span>
+              <div>
+                <h3>{price.name}</h3>
+                <p>{price.summary}</p>
+              </div>
+              <span class="amt">£{price.amount}</span>
+              <a class="btn btn-line btn-sm" href={business.booking}>
+                Book {price.minutes} mins<span class="vh"> {price.name.toLowerCase()}, £{price.amount}</span>
+              </a>
+            </div>
+          ))
+        }
+      </div>
+      <p class="p-note">90-minute sessions from £{ninetyFrom}. <a href={routes.prices}>See all prices</a></p>
+    </div>
+  </section>
+
+  <section class="block" id="location" aria-labelledby="l-h">
+    <div class="wrap loc-grid">
+      <div class="loc-card">
+        <p class="kicker">Location</p>
+        <h2 id="l-h">Birchgrove, Cardiff</h2>
+        <address>
+          {business.address.street}<br />
+          {business.address.locality}, {business.address.city} {business.address.postcode}
+        </address>
+        <table class="hours">
+          <caption class="vh">Opening hours</caption>
+          <tr><th scope="row">Monday – Friday</th><td>8:30am – 9:30pm</td></tr>
+          <tr><th scope="row">Saturday – Sunday</th><td>8:30am – 6:30pm</td></tr>
+        </table>
+        <a class="btn btn-line" href={business.directions} target="_blank" rel="noopener">
+          Get directions<span class="vh"> (opens in a new tab)</span>
+        </a>
+      </div>
+      <div class="map" role="img" aria-label="Map placeholder showing 33 Groveland Road, Birchgrove, Cardiff">
+        <svg viewBox="0 0 700 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <rect width="700" height="500" fill="#1C2126" />
+          <path d="M-20 360 C150 300 260 400 430 330 S620 250 720 280" stroke="#2D343B" stroke-width="26" fill="none" />
+          <path d="M90 -10 L230 510 M410 -10 L350 510 M-10 140 L710 190 M-10 430 L710 410 M540 -10 L600 510" stroke="#2A3037" stroke-width="10" />
+          <path d="M-10 60 L710 90 M170 -10 L120 510" stroke="#252A30" stroke-width="5" />
+          <rect x="450" y="70" width="150" height="90" fill="#1F2A26" />
+          <rect x="40" y="210" width="120" height="100" fill="#1F2A26" />
+        </svg>
+        <div class="pin">
+          <span>Sports Massage Therapy Cymru</span>
+          <svg width="34" height="44" viewBox="0 0 24 32" aria-hidden="true">
+            <path d="M12 0a12 12 0 0112 12c0 9-12 20-12 20S0 21 0 12A12 12 0 0112 0z" fill="#E3A587" />
+            <circle cx="12" cy="12" r="4.5" fill="#0F1113" />
+          </svg>
+        </div>
+        <span class="note">Map placeholder: Google Maps embed</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="block contact" id="contact" aria-labelledby="c-h">
+    <div class="wrap contact-grid">
+      <div>
+        <p class="kicker">Contact</p>
+        <h2 id="c-h">Questions? Get in touch</h2>
+        <p>I always reply to all queries, so please check junk if you're expecting a reply email and don't see one.</p>
+        <div class="cl">
+          <a href={`tel:${business.phoneTel}`}>{business.phoneDisplay}</a>
+          <a class="em" href={`mailto:${business.email}`}>massagetherapycymru@<wbr />gmail.com</a>
+        </div>
+      </div>
+      <form data-contact-form action={`mailto:${business.email}`} method="post" enctype="text/plain" aria-label="Contact form">
+        <div class="field">
+          <label for="fn">First name <span>(required)</span></label>
+          <input id="fn" name="first-name" required autocomplete="given-name" />
+        </div>
+        <div class="field">
+          <label for="ln">Last name <span>(required)</span></label>
+          <input id="ln" name="last-name" required autocomplete="family-name" />
+        </div>
+        <div class="field full">
+          <label for="em">Email <span>(required)</span></label>
+          <input id="em" name="email" type="email" required autocomplete="email" />
+        </div>
+        <div class="field full">
+          <label for="ms">Message <span>(required)</span></label>
+          <textarea id="ms" name="message" required></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit">Send message</button>
+      </form>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const form = document.querySelector('[data-contact-form]');
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    if (!(form instanceof HTMLFormElement)) return;
+    if (!form.reportValidity()) return;
+    const data = new FormData(form);
+    const body = [
+      `First name: ${data.get('first-name')}`,
+      `Last name: ${data.get('last-name')}`,
+      `Email: ${data.get('email')}`,
+      '',
+      String(data.get('message') ?? ''),
+    ].join('\n');
+    const subject = 'Message for Sports Massage Therapy Cymru';
+    window.location.href = `mailto:massagetherapycymru@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  });
+</script>
