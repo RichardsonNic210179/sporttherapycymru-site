@@ -441,6 +441,17 @@ footer .f-contact li{margin-bottom:18.5px}footer .f-contact li:last-child{margin
 .map-col{min-width:0}
 .map-follow{margin-top:var(--s3)}
 .map-follow a{display:inline-flex;align-items:center;min-height:44px;font-weight:600}
-.hero-photo picture,.tile .ph picture,.about-ph picture{display:block;width:100%;height:100%}
+.room h2{margin:var(--s4) 0 var(--s5)}
+.room p.lead{color:var(--muted);font-size:18px;margin-bottom:var(--s6);max-width:46ch}
+.info address{font-size:17px}
+.info .dir{display:inline-flex;align-items:center;min-height:44px;font-weight:600}
+.page-hero.compact{padding-bottom:var(--s8)}
+.book-card h2{margin-top:var(--s4)}
+.hero-photo picture,.tile .ph picture,.about-ph picture,.ph-media picture,.room picture,.c-side picture{display:block;width:100%;height:100%}
 .hero-photo picture{position:absolute;inset:0}
+.send-error{display:none;border:2px solid var(--err);border-left-width:6px;border-radius:var(--r);padding:var(--s5);margin-bottom:var(--s6);background:var(--ink)}
+.send-error.is-shown{display:block}
+.send-error h3{font:700 26px/1 var(--cond);margin-bottom:var(--s3)}
+.send-error p{color:var(--text);margin:0}
+.send-error a{display:inline-flex;align-items:center;min-height:44px;font-weight:600}
 @media (max-width:1100px) and (min-width:641px){.brand img{width:48px}}

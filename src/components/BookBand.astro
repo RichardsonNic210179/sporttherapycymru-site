@@ -1,0 +1,19 @@
+---
+import Arrow from './Arrow.astro';
+import { business } from '../data/site.js';
+
+const { heading, text, headingId = 'bb-h' } = Astro.props;
+---
+
+<section class="book-band" aria-labelledby={headingId}>
+  <div class="wrap">
+    <div>
+      <h2 id={headingId}>{heading}</h2>
+      <p>{text}</p>
+    </div>
+    <div class="acts">
+      <a class="btn btn-ink" href={business.booking}>Book online <Arrow /></a>
+      <a class="tel" href={`tel:${business.phoneTel}`}>Or call {business.phoneDisplay}</a>
+    </div>
+  </div>
+</section>

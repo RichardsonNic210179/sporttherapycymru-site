@@ -1,0 +1,295 @@
+---
+import { Picture } from 'astro:assets';
+import { images } from '../assets/images.js';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Arrow from '../components/Arrow.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { business, routes } from '../data/site.js';
+---
+
+<BaseLayout
+  title="Book a Sports Massage in Cardiff | Contact | Sports Massage Therapy Cymru"
+  description="Book a sports massage in Cardiff online, or send a question. Call 07735 177801. Open 7 days in Birchgrove, Cardiff."
+>
+  <section class="page-hero compact">
+    <div class="wrap">
+      <Breadcrumbs items={[{ href: routes.home, label: 'Home' }, { label: 'Contact & book' }]} />
+      <div class="ph-grid c-hero">
+        <div>
+          <p class="kicker">Contact &amp; book</p>
+          <h1>
+            Book a sports massage
+            <span class="sub">or ask me a question</span>
+          </h1>
+          <p class="lede">
+            Want to book a sports massage in Cardiff? Book online in one step. Have a question? Fill in the form below and I'll be in touch as soon as possible.
+          </p>
+        </div>
+        <div class="book-card">
+          <div>
+            <p class="kicker">Fastest way</p>
+            <h2 id="bk-h">Book online</h2>
+            <p>See available times and book your appointment through Setmore. Open 7 days, from 8:30am.</p>
+          </div>
+          <div>
+            <a class="btn btn-primary" href={business.booking}>Book now <Arrow /></a>
+            <p class="via">Secure booking via Setmore</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="form-h">
+    <div class="wrap c-grid">
+      <div class="form-card">
+        <h2 id="form-h">Send a message</h2>
+        <p>
+          Have a question? Just fill in the form and I'll be in touch as soon as possible.
+          <span class="req-note">All fields are required unless marked optional.</span>
+        </p>
+        <div class="err-summary" id="err-summary" role="alert" tabindex="-1" aria-labelledby="es-h">
+          <h3 id="es-h">There's a problem</h3>
+          <ul>
+            <li><a href="#fn">Enter your first name</a></li>
+            <li><a href="#em">Enter an email address in the right format, like name@example.com</a></li>
+            <li><a href="#ms">Enter your message</a></li>
+          </ul>
+        </div>
+        <div class="send-error" id="send-error" role="alert" tabindex="-1">
+          <h3>Message not sent</h3>
+          <p>
+            Please call <a href={`tel:${business.phoneTel}`}>{business.phoneDisplay}</a>
+            or email <a href={`mailto:${business.email}`}>{business.email}</a>.
+          </p>
+        </div>
+        <div class="form-success" id="form-success" role="status" tabindex="-1">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" stroke-width="1.6" />
+            <path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="currentColor" stroke-width="2.2" />
+          </svg>
+          <h3 id="thanks-h">Thanks, your message is sent</h3>
+          <p>I'll be in touch as soon as possible. I always reply to all queries, so please check your junk folder if you don't see my email.</p>
+          <p>Want to book now? <a href={business.booking}>Book online with Setmore</a></p>
+        </div>
+        <form
+          name="contact"
+          method="POST"
+          action="/"
+          data-netlify="true"
+          netlify-honeypot="website"
+          data-form
+          novalidate
+          aria-labelledby="form-h"
+        >
+          <input type="hidden" name="form-name" value="contact" />
+          <div class="field">
+            <label for="fn">First name <span>(required)</span></label>
+            <span class="err-msg" id="fn-err">
+              <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor" /><path d="M10 5v6M10 13.6v1.4" stroke="#0F1113" stroke-width="2.2" /></svg>
+              <span>Enter your first name</span>
+            </span>
+            <input id="fn" name="first-name" autocomplete="given-name" required aria-required="true" />
+          </div>
+          <div class="field">
+            <label for="ln">Last name <span>(required)</span></label>
+            <span class="err-msg" id="ln-err">
+              <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor" /><path d="M10 5v6M10 13.6v1.4" stroke="#0F1113" stroke-width="2.2" /></svg>
+              <span>Enter your last name</span>
+            </span>
+            <input id="ln" name="last-name" autocomplete="family-name" required aria-required="true" />
+          </div>
+          <div class="field full">
+            <label for="em">Email <span>(required)</span></label>
+            <span class="err-msg" id="em-err">
+              <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor" /><path d="M10 5v6M10 13.6v1.4" stroke="#0F1113" stroke-width="2.2" /></svg>
+              <span>Enter an email address in the right format, like name@example.com</span>
+            </span>
+            <input id="em" name="email" type="email" autocomplete="email" required aria-required="true" />
+          </div>
+          <div class="field full">
+            <label for="ms">Message <span>(required)</span></label>
+            <span class="err-msg" id="ms-err">
+              <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor" /><path d="M10 5v6M10 13.6v1.4" stroke="#0F1113" stroke-width="2.2" /></svg>
+              <span>Enter your message</span>
+            </span>
+            <textarea id="ms" name="message" required aria-required="true"></textarea>
+          </div>
+          <div class="field full">
+            <label for="hear">How did you hear about me? <span>(optional)</span></label>
+            <span class="hint" id="hear-hint">For example Google, Instagram or a friend.</span>
+            <textarea id="hear" name="hear" aria-describedby="hear-hint"></textarea>
+          </div>
+          <div class="hp" aria-hidden="true">
+            <label for="website">Leave this field empty</label>
+            <input id="website" name="website" tabindex="-1" autocomplete="off" />
+          </div>
+          <button class="btn btn-primary" type="submit">Send message</button>
+        </form>
+      </div>
+      <div class="c-side">
+        <Picture
+          src={images.contactPortrait}
+          alt="Nic, the therapist, standing with arms crossed"
+          formats={['avif', 'webp']}
+          widths={[480, 800, 1200]}
+          sizes="(max-width: 960px) 100vw, 34vw"
+        />
+        <div class="info">
+          <h3>Call or text</h3>
+          <a class="v" href={`tel:${business.phoneTel}`}>{business.phoneDisplay}</a>
+        </div>
+        <div class="info">
+          <h3>Email</h3>
+          <a class="v em" href={`mailto:${business.email}`}>massagetherapycymru@<wbr />gmail.com</a>
+          <p>I always reply to all queries, so please check junk if you're expecting a reply email and don't see one.</p>
+        </div>
+        <div class="info">
+          <h3>Opening hours</h3>
+          <table class="hours">
+            <caption class="vh">Opening hours</caption>
+            <tr><th scope="row">Monday – Friday</th><td>8:30am – 9:30pm</td></tr>
+            <tr><th scope="row">Saturday – Sunday</th><td>8:30am – 6:30pm</td></tr>
+          </table>
+        </div>
+        <div class="info">
+          <h3>Address</h3>
+          <address>
+            {business.address.street}<br />
+            {business.address.locality}, {business.address.city} {business.address.postcode}
+          </address>
+          <a class="dir" href={routes.location}>Location &amp; directions</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const form = document.querySelector('[data-form]');
+  if (form instanceof HTMLFormElement) {
+    const summary = document.getElementById('err-summary');
+    const summaryList = summary?.querySelector('ul');
+    const success = document.getElementById('form-success');
+    const thanks = document.getElementById('thanks-h');
+    const emailMessage = 'Enter an email address in the right format, like name@example.com';
+
+    const rules = [
+      { id: 'fn', empty: 'Enter your first name' },
+      { id: 'ln', empty: 'Enter your last name' },
+      { id: 'em', empty: 'Enter your email address', email: true },
+      { id: 'ms', empty: 'Enter your message' },
+    ];
+
+    const messageFor = (rule, value) => {
+      const text = value.trim();
+      if (!text) return rule.empty;
+      if (rule.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(text)) return emailMessage;
+      return '';
+    };
+
+    const clearErrors = () => {
+      rules.forEach((rule) => {
+        const input = document.getElementById(rule.id);
+        const field = input?.closest('.field');
+        field?.classList.remove('has-error');
+        input?.removeAttribute('aria-invalid');
+        if (input?.id === 'hear') return;
+        const described = input?.getAttribute('aria-describedby') || '';
+        const next = described
+          .split(' ')
+          .filter((id) => id && id !== `${rule.id}-err`)
+          .join(' ');
+        if (next) input?.setAttribute('aria-describedby', next);
+        else input?.removeAttribute('aria-describedby');
+      });
+    };
+
+    const showErrors = (problems) => {
+      hideSendError();
+      document.body.classList.add('state-error');
+      document.body.classList.remove('state-success');
+      if (summaryList) {
+        summaryList.replaceChildren(
+          ...problems.map((problem) => {
+            const item = document.createElement('li');
+            const link = document.createElement('a');
+            link.href = `#${problem.id}`;
+            link.textContent = problem.message;
+            item.append(link);
+            return item;
+          }),
+        );
+      }
+      problems.forEach((problem) => {
+        const input = document.getElementById(problem.id);
+        const field = input?.closest('.field');
+        const message = document.querySelector(`#${problem.id}-err span:last-child`);
+        if (message) message.textContent = problem.message;
+        field?.classList.add('has-error');
+        input?.setAttribute('aria-invalid', 'true');
+        const described = new Set((input?.getAttribute('aria-describedby') || '').split(' ').filter(Boolean));
+        described.add(`${problem.id}-err`);
+        input?.setAttribute('aria-describedby', [...described].join(' '));
+      });
+      summary?.focus();
+    };
+
+    const sendError = document.getElementById('send-error');
+    const hideSendError = () => sendError?.classList.remove('is-shown');
+    const showSendError = () => {
+      document.body.classList.remove('state-success');
+      sendError?.classList.add('is-shown');
+      sendError?.focus();
+    };
+    const thanksText = (name) =>
+      /^[A-Za-z][A-Za-z' -]{0,40}$/.test(name) ? `Thanks, ${name}. Your message is sent` : 'Thanks, your message is sent';
+    const showSuccess = (name) => {
+      hideSendError();
+      document.body.classList.remove('state-error');
+      document.body.classList.add('state-success');
+      if (thanks) thanks.textContent = thanksText(name);
+      success?.focus();
+    };
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      clearErrors();
+      hideSendError();
+      const problems = rules
+        .map((rule) => {
+          const input = document.getElementById(rule.id);
+          const value = input instanceof HTMLInputElement || input instanceof HTMLTextAreaElement ? input.value : '';
+          const message = messageFor(rule, value);
+          return message ? { id: rule.id, message } : null;
+        })
+        .filter(Boolean);
+      if (problems.length) {
+        showErrors(problems);
+        return;
+      }
+      const honeypot = document.getElementById('website');
+      const first = document.getElementById('fn');
+      const name = first instanceof HTMLInputElement ? first.value.trim() : '';
+      if (honeypot instanceof HTMLInputElement && honeypot.value) {
+        showSuccess(name);
+        return;
+      }
+      try {
+        const response = await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(new FormData(form)),
+        });
+        if (!response.ok) {
+          showSendError();
+          return;
+        }
+      } catch {
+        showSendError();
+        return;
+      }
+      showSuccess(name);
+    });
+  }
+</script>
