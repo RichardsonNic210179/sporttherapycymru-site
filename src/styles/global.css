@@ -257,7 +257,10 @@ footer li{margin-bottom:10px}
 /* two-column section: heading left, content right */
 .split{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--s9);align-items:start}
 .split h2{margin-top:var(--s4)}
+.prose h2{margin:var(--s7) 0 var(--s4)}
+.prose h2:first-child{margin-top:0}
 .prose p{color:var(--muted);font-size:18px;max-width:62ch;margin-bottom:var(--s4)}
+.prose a{font-weight:600;overflow-wrap:anywhere}
 .prose .big{font:600 24px/1.4 var(--sans);color:var(--text);letter-spacing:-.01em;margin-bottom:var(--s5)}
 .ticks{display:grid;gap:var(--s3);margin:var(--s5) 0}
 .ticks.two{grid-template-columns:repeat(2,minmax(0,1fr))}

@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { business, routes } from '../data/site.js';
+---
+
+<BaseLayout
+  title="Privacy notice | Sports Massage Therapy Cymru"
+  description="How Sports Massage Therapy Cymru uses your name, email and message. No analytics or advertising. Ask for your information to be corrected or deleted."
+>
+  <section class="page-hero">
+    <div class="wrap">
+      <Breadcrumbs items={[{ href: routes.home, label: 'Home' }, { label: 'Privacy' }]} />
+      <p class="kicker">Privacy</p>
+      <h1>Privacy notice</h1>
+      <p class="lede">How Sports Massage Therapy Cymru uses the information you send, and how to ask about it.</p>
+      <p class="lede">Last updated November 2026.</p>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="who-h">
+    <div class="wrap prose">
+      <h2 id="who-h">Who we are</h2>
+      <p>
+        Sports Massage Therapy Cymru is run by Nic. The clinic is at 33 Groveland Road, Birchgrove, Cardiff CF14 4QX.
+      </p>
+      <p>
+        Email <a href={`mailto:${business.email}`}>{business.email}</a>.
+        Phone <a href={`tel:${business.phoneTel}`}>{business.phoneDisplay}</a>.
+      </p>
+
+      <h2 id="form-h">What the contact form collects</h2>
+      <p>
+        The contact form asks for your first name, last name, email and a message. There is also an optional question about how you heard about the clinic. The form does not have a phone field. If you include a phone number in your message, that is collected too.
+      </p>
+      <p>
+        Messages may include health or injury details. Those details are used only to reply to you and to plan your treatment.
+      </p>
+
+      <h2 id="host-h">Who processes the form</h2>
+      <p>Form submissions are processed by Netlify, the company that hosts this website.</p>
+
+      <h2 id="book-h">Bookings</h2>
+      <p>
+        Bookings are handled by Setmore, under its own privacy policy.
+        <a href="https://www.setmore.com/privacy" target="_blank" rel="noopener">Setmore privacy policy<span class="vh"> (opens in a new tab)</span></a>.
+      </p>
+
+      <h2 id="maps-h">Google Maps</h2>
+      <p>
+        The map on this website is a Google Maps embed. Google may set cookies when that map loads.
+        <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's privacy policy<span class="vh"> (opens in a new tab)</span></a>.
+      </p>
+
+      <h2 id="track-h">Analytics and advertising</h2>
+      <p>This website does not use analytics or advertising tracking.</p>
+
+      <h2 id="keep-h">How long information is kept</h2>
+      <p>Messages are deleted once they are no longer needed.</p>
+
+      <h2 id="rights-h">Your rights</h2>
+      <p>
+        You can ask to see the personal information held about you, ask for a correction, ask for it to be deleted, and object to how it is used.
+        Email <a href={`mailto:${business.email}`}>{business.email}</a>.
+      </p>
+
+      <h2 id="ico-h">Complaints</h2>
+      <p>
+        You can complain to the Information Commissioner's Office (ICO).
+        <a href="https://ico.org.uk" target="_blank" rel="noopener">ico.org.uk<span class="vh"> (opens in a new tab)</span></a>.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
