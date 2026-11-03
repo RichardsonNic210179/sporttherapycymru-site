@@ -28,4 +28,6 @@ Preview the build locally:
 npm run preview
 ```
 
-There is no hosting or deploy config. The build is a plain static site in `dist/`.
+The build is a plain static site in `dist/`.
+
+`public/_redirects` is a Netlify redirect for the old sports massage URL. The contact page uses Netlify Forms. In the Netlify dashboard, turn on form notifications for the `contact` form so messages reach massagetherapycymru@gmail.com.

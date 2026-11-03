@@ -1,0 +1,142 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Arrow from '../components/Arrow.astro';
+import BookBand from '../components/BookBand.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { business, routes } from '../data/site.js';
+
+const gettingHere = [
+  {
+    num: 'By car',
+    title: 'Street parking',
+    text: 'There’s street parking on and around Groveland Road. It can get busy in the evenings, so allow a few extra minutes to find a space.',
+  },
+  {
+    num: 'By bike',
+    title: 'Somewhere safe for your bike',
+    text: 'Cycling in? There’s a safe place to leave your bike while you’re in your session.',
+  },
+  {
+    num: 'By train',
+    title: 'About 1km from 3 stations',
+    text: 'Birchgrove, Rhiwbina and Heath train stations are each roughly 1km away.',
+  },
+  {
+    num: 'By bus',
+    title: 'Short walk from Birchgrove',
+    text: 'If you catch the bus to Birchgrove, it’s a short walk from the stop.',
+  },
+];
+---
+
+<BaseLayout
+  title="Sports Massage Location: Birchgrove, Cardiff CF14 4QX | Sports Massage Therapy Cymru"
+  description="Sports Massage Therapy Cymru is at 33 Groveland Road, Birchgrove, Cardiff CF14 4QX. A comfortable and professional purpose-built treatment room, open 7 days."
+>
+  <section class="page-hero">
+    <div class="wrap">
+      <Breadcrumbs items={[{ href: routes.home, label: 'Home' }, { label: 'Location' }]} />
+      <div class="ph-grid">
+        <div>
+          <p class="kicker">Location · CF14 4QX</p>
+          <h1>
+            Sports massage in Birchgrove, Cardiff
+            <span class="sub">Find the treatment room</span>
+          </h1>
+          <p class="lede">A comfortable and professional, purpose-built treatment room in Birchgrove, open 7 days a week.</p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href={business.booking}>Book now <Arrow /></a>
+            <a class="btn btn-line" href={business.directions} target="_blank" rel="noopener">
+              Get directions<span class="vh"> (opens Google Maps in a new tab)</span>
+            </a>
+          </div>
+        </div>
+        <div class="ph-media wide">
+          <img
+            src="/img/gallery-nic-wide-logo-wall-landscape.jpg"
+            alt="The treatment room, with the Sports Massage Therapy Cymru logo on the wall"
+            width="1400"
+            height="1120"
+          />
+          <div class="hero-tag"><b>Birchgrove, Cardiff</b>Purpose-built treatment room</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="area-h">
+    <div class="wrap area-band">
+      <div class="loc-card">
+        <p class="kicker">Find us</p>
+        <h2 id="area-h">Serving all of Cardiff &amp; South Wales</h2>
+        <p class="area-line">I see clients from across Cardiff and South Wales at my treatment room in Birchgrove.</p>
+        <address>
+          {business.name}<br />
+          {business.address.street}<br />
+          {business.address.locality}, {business.address.city} {business.address.postcode}
+        </address>
+        <div class="loc-actions">
+          <a class="btn btn-line" href={business.directions} target="_blank" rel="noopener">
+            Get directions<span class="vh"> (opens Google Maps in a new tab)</span>
+          </a>
+          <a class="btn btn-line" href={`tel:${business.phoneTel}`}>Call {business.phoneDisplay}</a>
+        </div>
+      </div>
+      <div class="map-col">
+        <div class="map xl">
+          <iframe
+            title="Map of Sports Massage Therapy Cymru, 33 Groveland Road, Birchgrove, Cardiff CF14 4QX"
+            src={business.mapEmbed}
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+        <p class="map-follow">
+          <a href={business.googleProfile} target="_blank" rel="noopener">
+            Sports Massage Therapy Cymru on Google<span class="vh"> (opens in a new tab)</span>
+          </a>
+        </p>
+      </div>
+    </div>
+    <div class="wrap room room-after">
+      <img
+        src="/img/gallery-nic-leg-massage-logo-wall.jpg"
+        alt="Nic treating a client's leg in the Birchgrove treatment room"
+        width="1400"
+        height="1750"
+        loading="lazy"
+      />
+      <div>
+        <p class="kicker">The room</p>
+        <h2 id="room-h">Purpose-built treatment room</h2>
+        <p class="lead">A comfortable &amp; professional purpose-built treatment room for sports massage, dry cupping, dry needling and deep oscillation.</p>
+        <a class="btn btn-line" href={routes.treatments}>View treatments</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block panel-band" aria-labelledby="get-h">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="kicker">Getting here</p>
+          <h2 id="get-h">Getting here &amp; parking</h2>
+        </div>
+        <p>How to reach the treatment room by car, bike, train or bus.</p>
+      </div>
+      <ul class="g-grid">
+        {
+          gettingHere.map((item) => (
+            <li class="g-card">
+              <p class="num">{item.num}</p>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <BookBand heading="Book your visit" text="Open 7 days. Mon–Fri 8:30am–9:30pm, Sat–Sun 8:30am–6:30pm." />
+</BaseLayout>

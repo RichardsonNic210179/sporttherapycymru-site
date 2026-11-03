@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { bio, business, fromPrice, prices, reviews, routes, treatments } from '../data/site.js';
+import { bio, business, fromPrice, prices, reviews, routes, sessionBookLabel, treatments } from '../data/site.js';
 
 const homePrices = prices.filter((price) => price.onHomepage);
 const ninetyFrom = Math.min(...prices.filter((price) => price.minutes === 90).map((price) => price.amount));
@@ -175,8 +175,8 @@ const description =
                 <p>{price.summary}</p>
               </div>
               <span class="amt">£{price.amount}</span>
-              <a class="btn btn-line btn-sm" href={business.booking}>
-                Book {price.minutes} mins<span class="vh"> {price.name.toLowerCase()}, £{price.amount}</span>
+              <a class="btn btn-line btn-sm" href={business.booking} aria-label={sessionBookLabel(price)}>
+                Book {price.minutes} mins
               </a>
             </div>
           ))

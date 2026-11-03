@@ -1,0 +1,88 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Arrow from '../components/Arrow.astro';
+import BookBand from '../components/BookBand.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { business, priceGroups, routes, sessionBookLabel } from '../data/site.js';
+---
+
+<BaseLayout
+  title="Sports Massage Prices Cardiff | Sports Massage Therapy Cymru"
+  description="Simple, all-inclusive sports massage prices in Cardiff: 45 mins £45, 60 mins £55, 90 mins £80, plus deep tissue and deep oscillation sessions. Book online."
+>
+  <section class="page-hero">
+    <div class="wrap">
+      <Breadcrumbs items={[{ href: routes.home, label: 'Home' }, { label: 'Prices' }]} />
+      <div class="ph-grid">
+        <div>
+          <p class="kicker">Prices</p>
+          <h1>
+            Simple, <span class="nw">all-inclusive</span> prices
+            <span class="sub">Sports massage in Cardiff from £45</span>
+          </h1>
+          <p class="lede">Every price includes all treatments. Choose the length that suits you, then book online in one step.</p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href={business.booking}>Book now <Arrow /></a>
+            <a class="btn btn-line" href={`tel:${business.phoneTel}`}>Call {business.phoneDisplay}</a>
+          </div>
+          <ul class="ph-facts">
+            <li>All treatments included</li>
+            <li>45, 60 &amp; 90 min sessions</li>
+            <li>Open 7 days</li>
+          </ul>
+        </div>
+        <div class="ph-media">
+          <img
+            src="/img/gallery-nic-back-massage-standing.jpg"
+            alt="Nic massaging a client's back in the treatment room"
+            width="1400"
+            height="1750"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="sm-h">
+    <div class="wrap">
+      {
+        priceGroups.map((group) => (
+          <div class="p-group">
+            <h2 id={group.id}>{group.title}</h2>
+            <div class="p-rows">
+              {group.items.map((price) => (
+                <div class="p-row">
+                  <h3 class="dur">
+                    {price.minutes} mins<span class="vh"> {price.name.toLowerCase()}</span>
+                  </h3>
+                  <div class="desc">
+                    <p>{price.detail || price.summary}</p>
+                  </div>
+                  <span class="amt">£{price.amount}</span>
+                  <a class="btn btn-line btn-sm" href={business.booking} aria-label={sessionBookLabel(price)}>
+                    Book {price.minutes} mins
+                  </a>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+      <div class="help">
+        <div>
+          <h2 id="help-h">Not sure which to book?</h2>
+          <p>Call or send a message and I'll help you pick the right session. I always reply to all queries.</p>
+        </div>
+        <div class="acts">
+          <a class="btn btn-primary" href={`tel:${business.phoneTel}`}>Call {business.phoneDisplay}</a>
+          <a class="btn btn-line" href={routes.contact}>Send a message</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <BookBand
+    heading="Ready when you are"
+    text={`Open 7 days in Birchgrove, Cardiff. ${business.hoursLabel.weekday}, ${business.hoursLabel.weekend}.`}
+  />
+</BaseLayout>

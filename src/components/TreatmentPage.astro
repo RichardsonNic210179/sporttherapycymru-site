@@ -1,0 +1,240 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Arrow from './Arrow.astro';
+import BookBand from './BookBand.astro';
+import Breadcrumbs from './Breadcrumbs.astro';
+import Tick from './Tick.astro';
+import { business, routes } from '../data/site.js';
+
+const { treatment } = Astro.props;
+---
+
+<BaseLayout title={treatment.title} description={treatment.description}>
+  <section class="page-hero">
+    <div class="wrap">
+      <Breadcrumbs items={treatment.crumbs} />
+      <div class="ph-grid">
+        <div>
+          <p class="kicker">{treatment.kicker}</p>
+          <h1>
+            {treatment.heading}
+            <span class="sub">{treatment.sub}</span>
+          </h1>
+          <p class="lede">{treatment.lede}</p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href={business.booking}>Book now <Arrow /></a>
+            <a class="btn btn-line" href={treatment.secondary.href}>{treatment.secondary.label}</a>
+          </div>
+          <ul class="ph-facts">
+            {treatment.facts.map((fact) => <li>{fact}</li>)}
+          </ul>
+        </div>
+        <div class="ph-media">
+          <img
+            src={treatment.image.src}
+            alt={treatment.image.alt}
+            width={treatment.image.width}
+            height={treatment.image.height}
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby={treatment.what.id}>
+    <div class="wrap split">
+      <div>
+        <p class="kicker">{treatment.what.kicker}</p>
+        <h2 id={treatment.what.id}>{treatment.what.heading}</h2>
+      </div>
+      <div class="prose">
+        <p class="big">{treatment.what.lead}</p>
+        <p>{treatment.what.body}</p>
+        <ul class="ticks two">
+          {
+            treatment.what.ticks.map((tick) => (
+              <li>
+                <Tick />
+                <span>{tick}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block panel-band" aria-labelledby={treatment.who.id}>
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="kicker">{treatment.who.kicker}</p>
+          <h2 id={treatment.who.id}>{treatment.who.heading}</h2>
+        </div>
+        <p>{treatment.who.intro}</p>
+      </div>
+      <ul class="who">
+        {
+          treatment.who.items.map((item) => (
+            <li>
+              <b>{item.num}</b>
+              <span>
+                {item.nowrap ? (
+                  <>
+                    {item.text.slice(0, item.text.indexOf(item.nowrap))}
+                    <span class="nw">{item.nowrap}</span>
+                  </>
+                ) : (
+                  item.text
+                )}
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby={treatment.benefits.id}>
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="kicker">{treatment.benefits.kicker}</p>
+          <h2 id={treatment.benefits.id}>{treatment.benefits.heading}</h2>
+        </div>
+        <p>{treatment.benefits.intro}</p>
+      </div>
+      <ul class="b-grid">
+        {
+          treatment.benefits.cards.map((card) => (
+            <li class="b-card">
+              <span class="num">{card.num}</span>
+              <h3>{card.title}</h3>
+              <p>{card.body}</p>
+              {card.list && (
+                <ul>
+                  {card.list.map((item) => (
+                    <li>{item}</li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby={treatment.expect.id} style="border-top:1px solid var(--line)">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="kicker">{treatment.expect.kicker}</p>
+          <h2 id={treatment.expect.id}>{treatment.expect.heading}</h2>
+        </div>
+        <p>
+          {treatment.expect.before} <span class="nw">{treatment.expect.nowrap}</span>
+        </p>
+      </div>
+      <ol class="steps">
+        {
+          treatment.expect.steps.map((step) => (
+            <li>
+              <span class="n">{step.num}</span>
+              <h3>{step.title}</h3>
+              {step.text && (
+                <p>
+                  {step.text} {step.link && <a href={step.link.href}>{step.link.label}</a>}
+                </p>
+              )}
+            </li>
+          ))
+        }
+      </ol>
+      <div class="sessions">
+        <p>Sessions of <span class="nw">45, 60 or 90 minutes</span>. Price includes all treatments.</p>
+        <a class="btn btn-line btn-sm" href={routes.prices}>See all prices</a>
+        <a class="btn btn-primary btn-sm" href={business.booking}>Book now</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block reviews" aria-labelledby="r-h">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="kicker">Reviews</p>
+          <h2 id="r-h">{treatment.reviewsHeading}</h2>
+          <p class="g-rating">
+            <span class="star" aria-hidden="true">★</span> Over 200 five-star <span class="nw">Google reviews</span>
+          </p>
+        </div>
+        <div class="rev-actions">
+          <a class="btn btn-line" href={routes.reviews}>Read all reviews</a>
+          <a class="g-link" href={business.googleProfile} target="_blank" rel="noopener">
+            See all on Google<span class="vh"> (opens in a new tab)</span> <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+      <!-- Reviews are plain crawlable HTML, copied word for word. No Review or AggregateRating schema. -->
+      <div class="reviews-grid">
+        {
+          treatment.reviews.map((review) => (
+            <figure class="review">
+              <div class="stars" role="img" aria-label="5 out of 5 stars">
+                ★★★★★
+              </div>
+              <blockquote>
+                <p>{review.text}</p>
+              </blockquote>
+              <figcaption>
+                <cite>{review.name}</cite>
+                <span class="rv-meta">
+                  <span class="g-mark" aria-hidden="true">G</span>
+                  Google review
+                  <span class="rv-dot" aria-hidden="true">·</span>
+                  <span class="rv-date">{review.when}</span>
+                </span>
+              </figcaption>
+            </figure>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <BookBand heading={treatment.book.heading} text={treatment.book.text} />
+
+  <section class="block" aria-labelledby={treatment.combine.id}>
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="kicker">{treatment.combine.kicker}</p>
+          <h2 id={treatment.combine.id}>{treatment.combine.heading}</h2>
+        </div>
+        <p>{treatment.combine.intro}</p>
+      </div>
+      <ul class="tiles t3">
+        {
+          treatment.combine.items.map((item) => (
+            <li>
+              <a class="tile" href={item.href}>
+                <div class="ph">
+                  <img src={item.image} alt="" width="1400" height="1750" loading="lazy" />
+                  <span class="num">{item.num}</span>
+                </div>
+                <div class="bd">
+                  <h3>{item.title}</h3>
+                  <p>{item.card}</p>
+                  <span class="go">
+                    Explore <span class="vh">{item.title}</span> <Arrow />
+                  </span>
+                </div>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

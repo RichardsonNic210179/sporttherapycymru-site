@@ -9,7 +9,9 @@ export const business = {
   booking: 'https://sportsmassagetherapycymru.setmore.com/book',
   googleProfile: 'https://g.page/r/CfhXp2wjENMzEBE',
   directions:
-    'https://www.google.com/maps/search/?api=1&query=33+Groveland+Road%2C+Birchgrove%2C+Cardiff+CF14+4QX',
+    'https://www.google.com/maps/dir/?api=1&destination=33+Groveland+Road%2C+Birchgrove%2C+Cardiff+CF14+4QX',
+  mapEmbed:
+    'https://maps.google.com/maps?q=Sports+Massage+Therapy+Cymru%2C+33+Groveland+Road%2C+Birchgrove%2C+Cardiff+CF14+4QX&output=embed',
   imagePath: '/img/og-share-logo-on-white.jpg',
   address: {
     street: '33 Groveland Road',
@@ -50,13 +52,16 @@ export const prices = [
   {
     minutes: 45,
     name: 'Sports massage',
+    group: 'sports',
     summary: 'Sports massage appointment.',
+    detail: 'Sports massage appointment. Price includes all treatments.',
     amount: 45,
     onHomepage: true,
   },
   {
     minutes: 60,
     name: 'Sports massage',
+    group: 'sports',
     summary: 'Sports massage appointment.',
     amount: 55,
     onHomepage: true,
@@ -64,6 +69,7 @@ export const prices = [
   {
     minutes: 60,
     name: 'Deep tissue + deep oscillation',
+    group: 'oscillation',
     summary: 'Deep tissue and deep oscillation.',
     amount: 70,
     onHomepage: true,
@@ -71,6 +77,7 @@ export const prices = [
   {
     minutes: 90,
     name: 'Sports massage',
+    group: 'sports',
     summary:
       'Sports massage. Book if you need emphasis on specific body parts and require full body treatments.',
     amount: 80,
@@ -79,6 +86,7 @@ export const prices = [
   {
     minutes: 90,
     name: 'Deep tissue and deep oscillation',
+    group: 'oscillation',
     summary:
       '90 minutes deep tissue and deep oscillation. Great if you train regularly and need full body treatment.',
     amount: 95,
@@ -88,14 +96,28 @@ export const prices = [
 
 export const fromPrice = Math.min(...prices.map((price) => price.amount));
 
+export const priceGroups = [
+  { id: 'sm-h', title: 'Sports massage', group: 'sports' },
+  { id: 'do-h', title: 'Deep tissue + deep oscillation', group: 'oscillation' },
+].map((group) => ({
+  ...group,
+  items: prices.filter((price) => price.group === group.group),
+}));
+
+/** Accessible name for a Setmore booking link, for example "Book a 45 minute sports massage". */
+export function sessionBookLabel(price) {
+  if (price.group === 'sports') return `Book a ${price.minutes} minute sports massage`;
+  return `Book a ${price.minutes} minute deep tissue and deep oscillation session`;
+}
+
 /**
- * Squarespace paths to keep. This pull request only builds `/` and the 404.
- * Every other path is linked so the later pages can use the same URLs.
+ * Live paths. Sports massage uses the corrected slug. The old typo URL
+ * (rehabiliation + trailing hyphen) 301s to it via public/_redirects.
  */
 export const routes = {
   home: '/',
   treatments: '/treatments-sports-massage-cardiff-injury-prevention-rehabilitation',
-  sportsMassage: '/benefits-of-sports-massage-cardiff-injury-recovery-rehabiliation-',
+  sportsMassage: '/benefits-of-sports-massage-cardiff-injury-recovery-rehabilitation',
   dryCupping: '/dry-cupping-sports-massage-cardiff-injury-prevention-rehabilitation',
   dryNeedling: '/dry-needling-sports-massage-cardiff-injury-prevention-rehabilitation',
   deepOscillation:
