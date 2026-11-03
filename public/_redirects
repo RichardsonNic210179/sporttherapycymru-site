@@ -1,0 +1,21 @@
+# Live sitemap URLs. One hop only. Anchors are sections on the homepage.
+# Pages that are not built yet use a temporary 302.
+
+# Permanent
+/home-sports-massage-cardiff-injury-recovery-rehabilitation / 301
+# The sports massage page is not in this branch. One hop to the treatments section.
+# The inner-pages branch points this at the built sports massage page.
+/treatments-sports-massage-cardiff-injury-prevention-rehabilitation /#treatments 301
+
+# Temporary until those pages exist
+/about-sports-massage-cardiff-injury-prevention-rehabilitation /#about 302
+/reviews-sports-massage-cardiff-injury-prevention-rehabilitation /#reviews 302
+/gallery-sports-massage-cardiff-injury-prevention-rehabilitation / 302
+/dry-cupping-sports-massage-cardiff-injury-prevention-rehabilitation /#treatments 302
+/dry-needling-sports-massage-cardiff-injury-prevention-rehabilitation /#treatments 302
+/deep-oscillation-therapy-sports-massage-cardiff-injury-prevention-rehabilitation-recovery /#treatments 302
+/benefits-of-sports-massage-cardiff-injury-recovery-rehabiliation- /#treatments 302
+/benefits-of-sports-massage-cardiff-injury-recovery-rehabilitation /#treatments 302
+/prices /#prices 302
+/location-sports-massage-cardiff-injury-prevention-rehabilitation /#location 302
+/book-sports-massage-cardiff-injury-prevention-rehabilitation /#contact 302
