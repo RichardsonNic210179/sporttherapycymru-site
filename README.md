@@ -28,6 +28,4 @@ Preview the build locally:
 npm run preview
 ```
 
-The build is a plain static site in `dist/`.
-
-`public/_redirects` is a Netlify redirect for the old sports massage URL. The contact page uses Netlify Forms. In the Netlify dashboard, turn on form notifications for the `contact` form so messages reach massagetherapycymru@gmail.com.
+The build is a plain static site in `dist/`. `public/_redirects` sends old live URLs to a built page or a homepage section in one hop. The contact page uses Netlify Forms. In the Netlify dashboard, turn on form notifications for the `contact` form so messages reach massagetherapycymru@gmail.com.

@@ -3,7 +3,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Arrow from '../components/Arrow.astro';
 import BookBand from '../components/BookBand.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
-import { business, priceGroups, routes, sessionBookLabel } from '../data/site.js';
+import { Picture } from 'astro:assets';
+import { images } from '../assets/images.js';
+import { business, priceGroups, routes } from '../data/site.js';
 ---
 
 <BaseLayout
@@ -32,11 +34,12 @@ import { business, priceGroups, routes, sessionBookLabel } from '../data/site.js
           </ul>
         </div>
         <div class="ph-media">
-          <img
-            src="/img/gallery-nic-back-massage-standing.jpg"
+          <Picture
+            src={images.backMassage}
             alt="Nic massaging a client's back in the treatment room"
-            width="1400"
-            height="1750"
+            formats={['avif', 'webp']}
+            widths={[640, 960, 1200]}
+            sizes="(max-width: 960px) 100vw, 42vw"
           />
         </div>
       </div>
@@ -59,8 +62,8 @@ import { business, priceGroups, routes, sessionBookLabel } from '../data/site.js
                     <p>{price.detail || price.summary}</p>
                   </div>
                   <span class="amt">£{price.amount}</span>
-                  <a class="btn btn-line btn-sm" href={business.booking} aria-label={sessionBookLabel(price)}>
-                    Book {price.minutes} mins
+                  <a class="btn btn-line btn-sm" href={business.booking}>
+                    Book {price.minutes} mins<span class="vh"> {price.name.toLowerCase()}, £{price.amount}</span>
                   </a>
                 </div>
               ))}

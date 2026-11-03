@@ -1,4 +1,6 @@
 ---
+import { Picture } from 'astro:assets';
+import { images } from '../assets/images.js';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Arrow from './Arrow.astro';
 import BookBand from './BookBand.astro';
@@ -30,11 +32,12 @@ const { treatment } = Astro.props;
           </ul>
         </div>
         <div class="ph-media">
-          <img
-            src={treatment.image.src}
+          <Picture
+            src={images[treatment.image.key]}
             alt={treatment.image.alt}
-            width={treatment.image.width}
-            height={treatment.image.height}
+            formats={['avif', 'webp']}
+            widths={[640, 960, 1200]}
+            sizes="(max-width: 960px) 100vw, 42vw"
           />
         </div>
       </div>
@@ -220,7 +223,13 @@ const { treatment } = Astro.props;
             <li>
               <a class="tile" href={item.href}>
                 <div class="ph">
-                  <img src={item.image} alt="" width="1400" height="1750" loading="lazy" />
+                  <Picture
+                    src={images[item.image]}
+                    alt=""
+                    formats={['avif', 'webp']}
+                    widths={[320, 480, 720]}
+                    sizes="(max-width: 640px) 42vw, 30vw"
+                  />
                   <span class="num">{item.num}</span>
                 </div>
                 <div class="bd">

@@ -1,4 +1,6 @@
 ---
+import { Picture } from 'astro:assets';
+import { images } from '../assets/images.js';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Arrow from '../components/Arrow.astro';
 import BookBand from '../components/BookBand.astro';
@@ -52,11 +54,12 @@ const gettingHere = [
           </div>
         </div>
         <div class="ph-media wide">
-          <img
-            src="/img/gallery-nic-wide-logo-wall-landscape.jpg"
+          <Picture
+            src={images.logoWall}
             alt="The treatment room, with the Sports Massage Therapy Cymru logo on the wall"
-            width="1400"
-            height="1120"
+            formats={['avif', 'webp']}
+            widths={[640, 960, 1400]}
+            sizes="(max-width: 960px) 100vw, 42vw"
           />
           <div class="hero-tag"><b>Birchgrove, Cardiff</b>Purpose-built treatment room</div>
         </div>
@@ -99,18 +102,18 @@ const gettingHere = [
       </div>
     </div>
     <div class="wrap room room-after">
-      <img
-        src="/img/gallery-nic-leg-massage-logo-wall.jpg"
+      <Picture
+        src={images.legMassage}
         alt="Nic treating a client's leg in the Birchgrove treatment room"
-        width="1400"
-        height="1750"
-        loading="lazy"
+        formats={['avif', 'webp']}
+        widths={[640, 960, 1400]}
+        sizes="(max-width: 960px) 100vw, 55vw"
       />
       <div>
         <p class="kicker">The room</p>
         <h2 id="room-h">Purpose-built treatment room</h2>
         <p class="lead">A comfortable &amp; professional purpose-built treatment room for sports massage, dry cupping, dry needling and deep oscillation.</p>
-        <a class="btn btn-line" href={routes.treatments}>View treatments</a>
+        <a class="btn btn-line" href={routes.sportsMassage}>View treatments</a>
       </div>
     </div>
   </section>

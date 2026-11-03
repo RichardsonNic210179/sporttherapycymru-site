@@ -1,4 +1,6 @@
 ---
+import { Picture } from 'astro:assets';
+import { images } from '../assets/images.js';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Arrow from '../components/Arrow.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
@@ -54,12 +56,19 @@ import { business, routes } from '../data/site.js';
             <li><a href="#ms">Enter your message</a></li>
           </ul>
         </div>
+        <div class="send-error" id="send-error" role="alert" tabindex="-1">
+          <h3>Message not sent</h3>
+          <p>
+            Please call <a href={`tel:${business.phoneTel}`}>{business.phoneDisplay}</a>
+            or email <a href={`mailto:${business.email}`}>{business.email}</a>.
+          </p>
+        </div>
         <div class="form-success" id="form-success" role="status" tabindex="-1">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" stroke-width="1.6" />
             <path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="currentColor" stroke-width="2.2" />
           </svg>
-          <h3 id="thanks-h">Thanks, Hannah. Message sent</h3>
+          <h3 id="thanks-h">Thanks, your message is sent</h3>
           <p>I'll be in touch as soon as possible. I always reply to all queries, so please check your junk folder if you don't see my email.</p>
           <p>Want to book now? <a href={business.booking}>Book online with Setmore</a></p>
         </div>
@@ -80,7 +89,7 @@ import { business, routes } from '../data/site.js';
               <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor" /><path d="M10 5v6M10 13.6v1.4" stroke="#0F1113" stroke-width="2.2" /></svg>
               <span>Enter your first name</span>
             </span>
-            <input id="fn" name="first-name" autocomplete="given-name" required aria-required="true" data-example="" data-err />
+            <input id="fn" name="first-name" autocomplete="given-name" required aria-required="true" />
           </div>
           <div class="field">
             <label for="ln">Last name <span>(required)</span></label>
@@ -88,7 +97,7 @@ import { business, routes } from '../data/site.js';
               <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor" /><path d="M10 5v6M10 13.6v1.4" stroke="#0F1113" stroke-width="2.2" /></svg>
               <span>Enter your last name</span>
             </span>
-            <input id="ln" name="last-name" autocomplete="family-name" required aria-required="true" data-example="Thomas" />
+            <input id="ln" name="last-name" autocomplete="family-name" required aria-required="true" />
           </div>
           <div class="field full">
             <label for="em">Email <span>(required)</span></label>
@@ -96,7 +105,7 @@ import { business, routes } from '../data/site.js';
               <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor" /><path d="M10 5v6M10 13.6v1.4" stroke="#0F1113" stroke-width="2.2" /></svg>
               <span>Enter an email address in the right format, like name@example.com</span>
             </span>
-            <input id="em" name="email" type="email" autocomplete="email" required aria-required="true" data-example="hannah.thomas.example.com" data-err />
+            <input id="em" name="email" type="email" autocomplete="email" required aria-required="true" />
           </div>
           <div class="field full">
             <label for="ms">Message <span>(required)</span></label>
@@ -104,12 +113,12 @@ import { business, routes } from '../data/site.js';
               <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor" /><path d="M10 5v6M10 13.6v1.4" stroke="#0F1113" stroke-width="2.2" /></svg>
               <span>Enter your message</span>
             </span>
-            <textarea id="ms" name="message" required aria-required="true" data-example="" data-err></textarea>
+            <textarea id="ms" name="message" required aria-required="true"></textarea>
           </div>
           <div class="field full">
             <label for="hear">How did you hear about me? <span>(optional)</span></label>
             <span class="hint" id="hear-hint">For example Google, Instagram or a friend.</span>
-            <textarea id="hear" name="hear" aria-describedby="hear-hint" data-example=""></textarea>
+            <textarea id="hear" name="hear" aria-describedby="hear-hint"></textarea>
           </div>
           <div class="hp" aria-hidden="true">
             <label for="website">Leave this field empty</label>
@@ -119,11 +128,12 @@ import { business, routes } from '../data/site.js';
         </form>
       </div>
       <div class="c-side">
-        <img
-          src="/img/contact-nic-portrait-arms-crossed.jpg"
+        <Picture
+          src={images.contactPortrait}
           alt="Nic, the therapist, standing with arms crossed"
-          width="1400"
-          height="1750"
+          formats={['avif', 'webp']}
+          widths={[480, 800, 1200]}
+          sizes="(max-width: 960px) 100vw, 34vw"
         />
         <div class="info">
           <h3>Call or text</h3>
@@ -196,6 +206,7 @@ import { business, routes } from '../data/site.js';
     };
 
     const showErrors = (problems) => {
+      hideSendError();
       document.body.classList.add('state-error');
       document.body.classList.remove('state-success');
       if (summaryList) {
@@ -224,35 +235,27 @@ import { business, routes } from '../data/site.js';
       summary?.focus();
     };
 
+    const sendError = document.getElementById('send-error');
+    const hideSendError = () => sendError?.classList.remove('is-shown');
+    const showSendError = () => {
+      document.body.classList.remove('state-success');
+      sendError?.classList.add('is-shown');
+      sendError?.focus();
+    };
+    const thanksText = (name) =>
+      /^[A-Za-z][A-Za-z' -]{0,40}$/.test(name) ? `Thanks, ${name}. Your message is sent` : 'Thanks, your message is sent';
     const showSuccess = (name) => {
+      hideSendError();
       document.body.classList.remove('state-error');
       document.body.classList.add('state-success');
-      if (thanks) thanks.textContent = `Thanks, ${name}. Message sent`;
+      if (thanks) thanks.textContent = thanksText(name);
       success?.focus();
     };
-
-    const state = new URLSearchParams(location.search).get('state');
-    if (state === 'error') {
-      document.body.classList.add('state-error');
-      form.querySelectorAll('[data-example]').forEach((input) => {
-        if (input instanceof HTMLInputElement || input instanceof HTMLTextAreaElement) {
-          input.value = input.getAttribute('data-example') || '';
-        }
-      });
-      form.querySelectorAll('[data-err]').forEach((input) => {
-        if (!(input instanceof HTMLElement)) return;
-        input.setAttribute('aria-invalid', 'true');
-        input.closest('.field')?.classList.add('has-error');
-        const described = new Set((input.getAttribute('aria-describedby') || '').split(' ').filter(Boolean));
-        described.add(`${input.id}-err`);
-        input.setAttribute('aria-describedby', [...described].join(' '));
-      });
-    }
-    if (state === 'success') document.body.classList.add('state-success');
 
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
       clearErrors();
+      hideSendError();
       const problems = rules
         .map((rule) => {
           const input = document.getElementById(rule.id);
@@ -267,20 +270,24 @@ import { business, routes } from '../data/site.js';
       }
       const honeypot = document.getElementById('website');
       const first = document.getElementById('fn');
-      const name = first instanceof HTMLInputElement && first.value.trim() ? first.value.trim() : 'there';
+      const name = first instanceof HTMLInputElement ? first.value.trim() : '';
       if (honeypot instanceof HTMLInputElement && honeypot.value) {
         showSuccess(name);
         return;
       }
       try {
-        const body = new URLSearchParams(new FormData(form));
-        await fetch('/', {
+        const response = await fetch('/', {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body,
+          body: new URLSearchParams(new FormData(form)),
         });
+        if (!response.ok) {
+          showSendError();
+          return;
+        }
       } catch {
-        // The success panel still confirms the attempt. Netlify stores the POST when the site is hosted there.
+        showSendError();
+        return;
       }
       showSuccess(name);
     });

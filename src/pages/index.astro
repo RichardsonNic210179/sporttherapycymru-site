@@ -1,6 +1,8 @@
 ---
+import { Picture } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { bio, business, fromPrice, prices, reviews, routes, sessionBookLabel, treatments } from '../data/site.js';
+import { images } from '../assets/images.js';
+import { bio, business, fromPrice, prices, reviews, routes, treatments } from '../data/site.js';
 
 const homePrices = prices.filter((price) => price.onHomepage);
 const ninetyFrom = Math.min(...prices.filter((price) => price.minutes === 90).map((price) => price.amount));
@@ -13,11 +15,13 @@ const description =
 <BaseLayout title={title} description={description}>
   <section class="hero">
     <div class="hero-photo">
-      <img
-        src="/img/gallery-hamstring-stretch.jpg"
+      <Picture
+        src={images.hero}
         alt="Nic stretching a client's hamstring on the treatment table"
-        width="1400"
-        height="1750"
+        formats={['avif', 'webp']}
+        widths={[640, 960, 1400]}
+        sizes="(max-width: 640px) 100vw, 62vw"
+        loading="eager"
         fetchpriority="high"
       />
     </div>
@@ -35,7 +39,7 @@ const description =
               <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.4" fill="none" />
             </svg>
           </a>
-          <a class="btn btn-line" href={routes.treatments}>View treatments</a>
+          <a class="btn btn-line" href={routes.sportsMassage}>View treatments</a>
         </div>
       </div>
     </div>
@@ -66,7 +70,13 @@ const description =
             <li>
               <a class="tile" href={item.href}>
                 <div class="ph">
-                  <img src={item.image} alt="" width="1400" height="1750" loading="lazy" />
+                  <Picture
+                    src={images[item.image]}
+                    alt=""
+                    formats={['avif', 'webp']}
+                    widths={[320, 480, 720]}
+                    sizes="(max-width: 640px) 42vw, 22vw"
+                  />
                   <span class="num">{item.num}</span>
                 </div>
                 <div class="bd">
@@ -90,12 +100,12 @@ const description =
   <section class="block about" id="about" aria-labelledby="a-h">
     <div class="wrap about-grid">
       <div class="about-ph">
-        <img
-          src="/img/gallery-nic-portrait-smiling-arms-crossed.jpg"
+        <Picture
+          src={images.portrait}
           alt="Nic, the therapist, standing in front of the Sports Massage Therapy Cymru logo wall"
-          width="1400"
-          height="1750"
-          loading="lazy"
+          formats={['avif', 'webp']}
+          widths={[480, 800, 1200]}
+          sizes="(max-width: 960px) 100vw, 46vw"
         />
         <div class="badge"><b>Hi, I'm Nic</b><span>Level 4 Massage Therapist</span></div>
       </div>
@@ -175,8 +185,8 @@ const description =
                 <p>{price.summary}</p>
               </div>
               <span class="amt">£{price.amount}</span>
-              <a class="btn btn-line btn-sm" href={business.booking} aria-label={sessionBookLabel(price)}>
-                Book {price.minutes} mins
+              <a class="btn btn-line btn-sm" href={business.booking}>
+                Book {price.minutes} mins<span class="vh"> {price.name.toLowerCase()}, £{price.amount}</span>
               </a>
             </div>
           ))
@@ -204,23 +214,20 @@ const description =
           Get directions<span class="vh"> (opens in a new tab)</span>
         </a>
       </div>
-      <div class="map" role="img" aria-label="Map placeholder showing 33 Groveland Road, Birchgrove, Cardiff">
-        <svg viewBox="0 0 700 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-          <rect width="700" height="500" fill="#1C2126" />
-          <path d="M-20 360 C150 300 260 400 430 330 S620 250 720 280" stroke="#2D343B" stroke-width="26" fill="none" />
-          <path d="M90 -10 L230 510 M410 -10 L350 510 M-10 140 L710 190 M-10 430 L710 410 M540 -10 L600 510" stroke="#2A3037" stroke-width="10" />
-          <path d="M-10 60 L710 90 M170 -10 L120 510" stroke="#252A30" stroke-width="5" />
-          <rect x="450" y="70" width="150" height="90" fill="#1F2A26" />
-          <rect x="40" y="210" width="120" height="100" fill="#1F2A26" />
-        </svg>
-        <div class="pin">
-          <span>Sports Massage Therapy Cymru</span>
-          <svg width="34" height="44" viewBox="0 0 24 32" aria-hidden="true">
-            <path d="M12 0a12 12 0 0112 12c0 9-12 20-12 20S0 21 0 12A12 12 0 0112 0z" fill="#E3A587" />
-            <circle cx="12" cy="12" r="4.5" fill="#0F1113" />
-          </svg>
+      <div class="map-col">
+        <div class="map">
+          <iframe
+            title="Map of Sports Massage Therapy Cymru, 33 Groveland Road, Birchgrove, Cardiff CF14 4QX"
+            src={business.mapEmbed}
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
         </div>
-        <span class="note">Map placeholder: Google Maps embed</span>
+        <p class="map-follow">
+          <a href={business.googleProfile} target="_blank" rel="noopener">
+            Sports Massage Therapy Cymru on Google<span class="vh"> (opens in a new tab)</span>
+          </a>
+        </p>
       </div>
     </div>
   </section>

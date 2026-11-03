@@ -1,9 +1,12 @@
 ---
+import { Image } from 'astro:assets';
+import { images } from '../assets/images.js';
+
 const { width = 60 } = Astro.props;
-const height = Math.round((width * 447) / 722);
+const height = Math.round((width * images.logo.height) / images.logo.width);
 ---
 
 <a class="brand" href="/" aria-label="Sports Massage Therapy Cymru home">
-  <img src="/img/mark-rose.png" alt="" width={width} height={height} />
+  <Image src={images.logo} alt="" width={width} height={height} densities={[1, 2]} loading="eager" />
   <span class="wm"><span>Sports Massage</span> <span>Therapy <b>Cymru</b></span></span>
 </a>

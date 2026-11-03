@@ -19,10 +19,8 @@ export const sportsMassage = {
   secondary: { href: routes.prices, label: 'See prices' },
   facts: ['Over 200 five-star Google reviews', '45, 60 & 90 min sessions', 'From £45, all inclusive'],
   image: {
-    src: '/img/gallery-nic-elbow-deep-tissue-technique.jpg',
+    key: 'elbow',
     alt: "Nic using his forearm to work deep into a client's back muscles",
-    width: 1400,
-    height: 1750,
   },
   what: {
     id: 'what-h',

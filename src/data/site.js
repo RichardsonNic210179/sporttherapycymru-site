@@ -31,15 +31,12 @@ export const business = {
     weekday: 'Mon–Fri 8:30am–9:30pm',
     weekend: 'Sat–Sun 8:30am–6:30pm',
   },
-  /* SameAs, in the order supplied for the business schema. */
   sameAs: [
-    'https://g.page/r/CfhXp2wjENMzEBE/review',
-    'http://instagram.com/sportsmassage_therapy_cymru/',
-    'http://facebook.com/profile.php?id=100095621850067',
-    'https://sportsmassagetherapycymru.setmore.com/book',
+    'https://www.instagram.com/sportsmassage_therapy_cymru/',
+    'https://www.facebook.com/profile.php?id=100095621850067',
   ],
-  instagram: 'http://instagram.com/sportsmassage_therapy_cymru/',
-  facebook: 'http://facebook.com/profile.php?id=100095621850067',
+  instagram: 'https://www.instagram.com/sportsmassage_therapy_cymru/',
+  facebook: 'https://www.facebook.com/profile.php?id=100095621850067',
   /* Live site (sporttherapycymru.com/prices) and Setmore, both read 3 Nov 2026. */
   priceRange: '£45–£95',
 };
@@ -104,30 +101,16 @@ export const priceGroups = [
   items: prices.filter((price) => price.group === group.group),
 }));
 
-/** Accessible name for a Setmore booking link, for example "Book a 45 minute sports massage". */
-export function sessionBookLabel(price) {
-  if (price.group === 'sports') return `Book a ${price.minutes} minute sports massage`;
-  return `Book a ${price.minutes} minute deep tissue and deep oscillation session`;
-}
-
-/**
- * Live paths. Sports massage uses the corrected slug. The old typo URL
- * (rehabiliation + trailing hyphen) 301s to it via public/_redirects.
- */
+/** Built pages, plus homepage sections for content that has no page yet. */
 export const routes = {
   home: '/',
-  treatments: '/treatments-sports-massage-cardiff-injury-prevention-rehabilitation',
   sportsMassage: '/benefits-of-sports-massage-cardiff-injury-recovery-rehabilitation',
-  dryCupping: '/dry-cupping-sports-massage-cardiff-injury-prevention-rehabilitation',
-  dryNeedling: '/dry-needling-sports-massage-cardiff-injury-prevention-rehabilitation',
-  deepOscillation:
-    '/deep-oscillation-therapy-sports-massage-cardiff-injury-prevention-rehabilitation-recovery',
   prices: '/prices',
-  about: '/about-sports-massage-cardiff-injury-prevention-rehabilitation',
-  reviews: '/reviews-sports-massage-cardiff-injury-prevention-rehabilitation',
-  gallery: '/gallery-sports-massage-cardiff-injury-prevention-rehabilitation',
   location: '/location-sports-massage-cardiff-injury-prevention-rehabilitation',
   contact: '/book-sports-massage-cardiff-injury-prevention-rehabilitation',
+  about: '/#about',
+  reviews: '/#reviews',
+  treatments: '/#treatments',
 };
 
 export const treatments = [
@@ -137,49 +120,47 @@ export const treatments = [
     menu: 'Deep tissue work for recovery, mobility and injury prevention.',
     card: 'Slow, firm deep tissue work to break down adhesions and restore muscle function.',
     href: routes.sportsMassage,
-    image: '/img/gallery-nic-elbow-deep-tissue-technique.jpg',
+    image: 'elbow',
   },
   {
     num: '02',
     title: 'Dry Cupping',
     menu: 'Suction cups to cut tension and boost circulation.',
     card: 'Suction lifts the tissue to reduce muscle tension, speed recovery and improve mobility.',
-    href: routes.dryCupping,
-    image: '/img/dry-cupping-hamstring.jpg',
+    href: routes.treatments,
+    image: 'cupping',
   },
   {
     num: '03',
     title: 'Dry Needling',
     menu: 'Fine needles that release trigger points and stubborn knots.',
     card: 'Thin needles target trigger points for stubborn knots and chronic tightness.',
-    href: routes.dryNeedling,
-    image: '/img/gallery-neck-release-seated-client.jpg',
+    href: routes.treatments,
+    image: 'neck',
   },
   {
     num: '04',
     title: 'Deep Oscillation',
     menu: 'Gentle electrostatic therapy for pain and swelling.',
     card: 'Non-invasive electrostatic therapy that eases pain and swelling, even post-surgery.',
-    href: routes.deepOscillation,
-    image: '/img/gallery-lower-back-massage-dark.jpg',
+    href: routes.treatments,
+    image: 'back',
   },
 ];
 
 export const mainNav = [
   { label: 'Home', href: routes.home },
-  { label: 'Treatments', href: routes.treatments, children: treatments },
+  { label: 'Sports massage', href: routes.sportsMassage },
   { label: 'Prices', href: routes.prices },
-  { label: 'About', href: routes.about },
-  { label: 'Reviews', href: routes.reviews },
-  { label: 'Gallery', href: routes.gallery },
   { label: 'Location', href: routes.location },
   { label: 'Contact', href: routes.contact },
 ];
 
 export const footerNav = [
-  { label: 'Treatments', href: routes.treatments },
+  { label: 'Sports massage', href: routes.sportsMassage },
   { label: 'Prices', href: routes.prices },
-  { label: 'Gallery', href: routes.gallery },
+  { label: 'Location', href: routes.location },
+  { label: 'Contact', href: routes.contact },
 ];
 
 /** Reviews #2, #9 and #3 from google-reviews-picks.md, word for word. */
