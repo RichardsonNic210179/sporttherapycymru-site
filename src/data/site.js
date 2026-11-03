@@ -108,7 +108,6 @@ export const routes = {
   prices: '/prices',
   location: '/location-sports-massage-cardiff-injury-prevention-rehabilitation',
   contact: '/book-sports-massage-cardiff-injury-prevention-rehabilitation',
-  privacy: '/privacy',
   about: '/#about',
   reviews: '/#reviews',
   treatments: '/#treatments',
@@ -162,7 +161,6 @@ export const footerNav = [
   { label: 'Prices', href: routes.prices },
   { label: 'Location', href: routes.location },
   { label: 'Contact', href: routes.contact },
-  { label: 'Privacy', href: routes.privacy },
 ];
 
 /** Reviews #2, #9 and #3 from google-reviews-picks.md, word for word. */
