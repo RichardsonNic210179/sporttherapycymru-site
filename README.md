@@ -28,4 +28,4 @@ Preview the build locally:
 npm run preview
 ```
 
-There is no hosting or deploy config. The build is a plain static site in `dist/`.
+The build is a plain static site in `dist/`. `public/_redirects` is a Netlify redirect file for the live URLs that do not have a page yet.

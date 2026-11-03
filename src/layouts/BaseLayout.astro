@@ -6,7 +6,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { business } from '../data/site.js';
 
-const { title, description } = Astro.props;
+const { title, description, noindex = false } = Astro.props;
 if (!title || !description) {
   throw new Error('Each page needs its own title and description.');
 }
@@ -50,7 +50,7 @@ const jsonLd = {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={canonical.href} />
+    {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical.href} />}
     <link rel="icon" href="/favicon.png" type="image/png" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_GB" />

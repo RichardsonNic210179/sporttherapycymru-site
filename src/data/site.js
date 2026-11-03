@@ -9,7 +9,9 @@ export const business = {
   booking: 'https://sportsmassagetherapycymru.setmore.com/book',
   googleProfile: 'https://g.page/r/CfhXp2wjENMzEBE',
   directions:
-    'https://www.google.com/maps/search/?api=1&query=33+Groveland+Road%2C+Birchgrove%2C+Cardiff+CF14+4QX',
+    'https://www.google.com/maps/dir/?api=1&destination=33+Groveland+Road%2C+Birchgrove%2C+Cardiff+CF14+4QX',
+  mapEmbed:
+    'https://maps.google.com/maps?q=Sports+Massage+Therapy+Cymru%2C+33+Groveland+Road%2C+Birchgrove%2C+Cardiff+CF14+4QX&output=embed',
   imagePath: '/img/og-share-logo-on-white.jpg',
   address: {
     street: '33 Groveland Road',
@@ -29,15 +31,12 @@ export const business = {
     weekday: 'Mon–Fri 8:30am–9:30pm',
     weekend: 'Sat–Sun 8:30am–6:30pm',
   },
-  /* SameAs, in the order supplied for the business schema. */
   sameAs: [
-    'https://g.page/r/CfhXp2wjENMzEBE/review',
-    'http://instagram.com/sportsmassage_therapy_cymru/',
-    'http://facebook.com/profile.php?id=100095621850067',
-    'https://sportsmassagetherapycymru.setmore.com/book',
+    'https://www.instagram.com/sportsmassage_therapy_cymru/',
+    'https://www.facebook.com/profile.php?id=100095621850067',
   ],
-  instagram: 'http://instagram.com/sportsmassage_therapy_cymru/',
-  facebook: 'http://facebook.com/profile.php?id=100095621850067',
+  instagram: 'https://www.instagram.com/sportsmassage_therapy_cymru/',
+  facebook: 'https://www.facebook.com/profile.php?id=100095621850067',
   /* Live site (sporttherapycymru.com/prices) and Setmore, both read 3 Nov 2026. */
   priceRange: '£45–£95',
 };
@@ -89,23 +88,17 @@ export const prices = [
 export const fromPrice = Math.min(...prices.map((price) => price.amount));
 
 /**
- * Squarespace paths to keep. This pull request only builds `/` and the 404.
- * Every other path is linked so the later pages can use the same URLs.
+ * Only routes that exist in this build, or homepage sections.
+ * Live URLs for unbuilt pages are redirects in public/_redirects, not nav links.
  */
 export const routes = {
   home: '/',
-  treatments: '/treatments-sports-massage-cardiff-injury-prevention-rehabilitation',
-  sportsMassage: '/benefits-of-sports-massage-cardiff-injury-recovery-rehabiliation-',
-  dryCupping: '/dry-cupping-sports-massage-cardiff-injury-prevention-rehabilitation',
-  dryNeedling: '/dry-needling-sports-massage-cardiff-injury-prevention-rehabilitation',
-  deepOscillation:
-    '/deep-oscillation-therapy-sports-massage-cardiff-injury-prevention-rehabilitation-recovery',
-  prices: '/prices',
-  about: '/about-sports-massage-cardiff-injury-prevention-rehabilitation',
-  reviews: '/reviews-sports-massage-cardiff-injury-prevention-rehabilitation',
-  gallery: '/gallery-sports-massage-cardiff-injury-prevention-rehabilitation',
-  location: '/location-sports-massage-cardiff-injury-prevention-rehabilitation',
-  contact: '/book-sports-massage-cardiff-injury-prevention-rehabilitation',
+  treatments: '/#treatments',
+  prices: '/#prices',
+  about: '/#about',
+  reviews: '/#reviews',
+  location: '/#location',
+  contact: '/#contact',
 };
 
 export const treatments = [
@@ -114,42 +107,41 @@ export const treatments = [
     title: 'Sports Massage',
     menu: 'Deep tissue work for recovery, mobility and injury prevention.',
     card: 'Slow, firm deep tissue work to break down adhesions and restore muscle function.',
-    href: routes.sportsMassage,
-    image: '/img/gallery-nic-elbow-deep-tissue-technique.jpg',
+    href: routes.treatments,
+    image: 'elbow',
   },
   {
     num: '02',
     title: 'Dry Cupping',
     menu: 'Suction cups to cut tension and boost circulation.',
     card: 'Suction lifts the tissue to reduce muscle tension, speed recovery and improve mobility.',
-    href: routes.dryCupping,
-    image: '/img/dry-cupping-hamstring.jpg',
+    href: routes.treatments,
+    image: 'cupping',
   },
   {
     num: '03',
     title: 'Dry Needling',
     menu: 'Fine needles that release trigger points and stubborn knots.',
     card: 'Thin needles target trigger points for stubborn knots and chronic tightness.',
-    href: routes.dryNeedling,
-    image: '/img/gallery-neck-release-seated-client.jpg',
+    href: routes.treatments,
+    image: 'neck',
   },
   {
     num: '04',
     title: 'Deep Oscillation',
     menu: 'Gentle electrostatic therapy for pain and swelling.',
     card: 'Non-invasive electrostatic therapy that eases pain and swelling, even post-surgery.',
-    href: routes.deepOscillation,
-    image: '/img/gallery-lower-back-massage-dark.jpg',
+    href: routes.treatments,
+    image: 'back',
   },
 ];
 
 export const mainNav = [
   { label: 'Home', href: routes.home },
-  { label: 'Treatments', href: routes.treatments, children: treatments },
+  { label: 'Treatments', href: routes.treatments },
   { label: 'Prices', href: routes.prices },
   { label: 'About', href: routes.about },
   { label: 'Reviews', href: routes.reviews },
-  { label: 'Gallery', href: routes.gallery },
   { label: 'Location', href: routes.location },
   { label: 'Contact', href: routes.contact },
 ];
@@ -157,7 +149,6 @@ export const mainNav = [
 export const footerNav = [
   { label: 'Treatments', href: routes.treatments },
   { label: 'Prices', href: routes.prices },
-  { label: 'Gallery', href: routes.gallery },
 ];
 
 /** Reviews #2, #9 and #3 from google-reviews-picks.md, word for word. */
