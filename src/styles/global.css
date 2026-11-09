@@ -155,7 +155,6 @@ form .btn{justify-self:start}
 .book-first{display:flex;flex-direction:column;align-items:flex-start;gap:var(--s4);margin-bottom:var(--s6)}
 .book-first p{margin:0;color:var(--text);max-width:42ch}
 .book-first .btn{min-height:52px}
-.form-reply-note{color:var(--muted);font-size:15px;line-height:1.5;margin:var(--s4) 0 0;max-width:52ch}
 /* footer */
 footer{background:#08090A;padding:var(--s9) 0 var(--s6);color:var(--muted);font-size:16px}
 .f-top{display:flex;justify-content:space-between;align-items:end;padding-bottom:var(--s7);border-bottom:1px solid var(--line);margin-bottom:var(--s7)}
