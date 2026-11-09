@@ -2,7 +2,10 @@
 # Built pages are not listed here. Unbuilt pages use a temporary 302.
 
 # Permanent
+/home / 301
+/home/ / 301
 /home-sports-massage-cardiff-injury-recovery-rehabilitation / 301
+/home-sports-massage-cardiff-injury-recovery-rehabilitation/ / 301
 /treatments-sports-massage-cardiff-injury-prevention-rehabilitation /benefits-of-sports-massage-cardiff-injury-recovery-rehabilitation 301
 /benefits-of-sports-massage-cardiff-injury-recovery-rehabiliation- /benefits-of-sports-massage-cardiff-injury-recovery-rehabilitation 301
 
@@ -10,6 +13,6 @@
 /about-sports-massage-cardiff-injury-prevention-rehabilitation /#about 302
 /reviews-sports-massage-cardiff-injury-prevention-rehabilitation /#reviews 302
 /gallery-sports-massage-cardiff-injury-prevention-rehabilitation / 302
-/dry-cupping-sports-massage-cardiff-injury-prevention-rehabilitation /benefits-of-sports-massage-cardiff-injury-recovery-rehabilitation 302
-/dry-needling-sports-massage-cardiff-injury-prevention-rehabilitation /benefits-of-sports-massage-cardiff-injury-recovery-rehabilitation 302
-/deep-oscillation-therapy-sports-massage-cardiff-injury-prevention-rehabilitation-recovery /benefits-of-sports-massage-cardiff-injury-recovery-rehabilitation 302
+/dry-cupping-sports-massage-cardiff-injury-prevention-rehabilitation /#treatments 302
+/dry-needling-sports-massage-cardiff-injury-prevention-rehabilitation /#treatments 302
+/deep-oscillation-therapy-sports-massage-cardiff-injury-prevention-rehabilitation-recovery /#treatments 302

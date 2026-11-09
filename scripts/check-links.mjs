@@ -4,7 +4,21 @@ import path from 'node:path';
 const root = path.resolve('dist');
 const redirectFile = path.resolve('public/_redirects');
 
-const extraPaths = ['/treatments-sports-massage-cardiff-injury-prevention-rehabilitation', '/'];
+const extraPaths = [
+  '/treatments-sports-massage-cardiff-injury-prevention-rehabilitation',
+  '/',
+  '/home',
+  '/home/',
+  '/home-sports-massage-cardiff-injury-recovery-rehabilitation',
+  '/home-sports-massage-cardiff-injury-recovery-rehabilitation/',
+];
+
+const homeRedirects = [
+  '/home',
+  '/home/',
+  '/home-sports-massage-cardiff-injury-recovery-rehabilitation',
+  '/home-sports-massage-cardiff-injury-recovery-rehabilitation/',
+];
 
 function parseRedirects(text) {
   const rules = [];
@@ -67,6 +81,17 @@ try {
 
 const paths = [...new Set([...sitemap, ...extraPaths])];
 const failures = [];
+
+for (const pathname of homeRedirects) {
+  const rule = redirectFrom.get(pathname);
+  if (!rule) {
+    failures.push(`${pathname} has no redirect`);
+    continue;
+  }
+  if (rule.status !== 301 || rule.to.split('#')[0] !== '/') {
+    failures.push(`${pathname} must 301 to / in one hop, got ${rule.status} ${rule.to}`);
+  }
+}
 
 for (const pathname of paths) {
   if (await exists(fileFor(pathname))) continue;

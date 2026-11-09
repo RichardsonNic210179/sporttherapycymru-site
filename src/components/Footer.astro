@@ -55,16 +55,14 @@ const year = new Date().getFullYear();
     </div>
     <div class="f-bottom">
       <span>© {year} {business.name}</span>
-      <span>
-        {
-          footerNav.map((item, index) => (
-            <>
-              {index > 0 ? ' · ' : ''}
-              <a href={item.href}>{item.label}</a>
-            </>
-          ))
-        }
-      </span>
+      <ul class="f-links">
+        {footerNav.map((item) => (
+          <li>
+            <a href={item.href}>{item.label}</a>
+            <span aria-hidden="true">·</span>
+          </li>
+        ))}
+      </ul>
     </div>
   </div>
 </footer>

@@ -2,7 +2,7 @@
 import Brand from './Brand.astro';
 import { business, mainNav } from '../data/site.js';
 
-const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const path = Astro.url.pathname.replace(/\.html$/, '').replace(/\/index$/, '').replace(/\/$/, '') || '/';
 const isCurrent = (href) => (href.replace(/\/$/, '') || '/') === path;
 const inSection = (item) => item.children?.some((child) => isCurrent(child.href));
 ---

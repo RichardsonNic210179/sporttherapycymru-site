@@ -1,6 +1,7 @@
 ---
 import { Picture } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
 import { images } from '../assets/images.js';
 import { bio, business, fromPrice, prices, reviews, routes, treatments } from '../data/site.js';
 
@@ -243,44 +244,7 @@ const description =
           <a class="em" href={`mailto:${business.email}`}>massagetherapycymru@<wbr />gmail.com</a>
         </div>
       </div>
-      <form data-contact-form action={`mailto:${business.email}`} method="post" enctype="text/plain" aria-label="Contact form">
-        <div class="field">
-          <label for="fn">First name <span>(required)</span></label>
-          <input id="fn" name="first-name" required autocomplete="given-name" />
-        </div>
-        <div class="field">
-          <label for="ln">Last name <span>(required)</span></label>
-          <input id="ln" name="last-name" required autocomplete="family-name" />
-        </div>
-        <div class="field full">
-          <label for="em">Email <span>(required)</span></label>
-          <input id="em" name="email" type="email" required autocomplete="email" />
-        </div>
-        <div class="field full">
-          <label for="ms">Message <span>(required)</span></label>
-          <textarea id="ms" name="message" required></textarea>
-        </div>
-        <button class="btn btn-primary" type="submit">Send message</button>
-      </form>
+      <ContactForm formName="homepage-contact" />
     </div>
   </section>
 </BaseLayout>
-
-<script>
-  const form = document.querySelector('[data-contact-form]');
-  form?.addEventListener('submit', (event) => {
-    event.preventDefault();
-    if (!(form instanceof HTMLFormElement)) return;
-    if (!form.reportValidity()) return;
-    const data = new FormData(form);
-    const body = [
-      `First name: ${data.get('first-name')}`,
-      `Last name: ${data.get('last-name')}`,
-      `Email: ${data.get('email')}`,
-      '',
-      String(data.get('message') ?? ''),
-    ].join('\n');
-    const subject = 'Message for Sports Massage Therapy Cymru';
-    window.location.href = `mailto:massagetherapycymru@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  });
-</script>

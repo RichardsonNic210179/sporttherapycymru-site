@@ -11,7 +11,9 @@ if (!title || !description) {
   throw new Error('Each page needs its own title and description.');
 }
 
-const canonical = new URL(Astro.url.pathname, Astro.site);
+/* build.format 'file' puts .html on Astro.url.pathname. Public URLs do not. */
+const pathname = (Astro.url.pathname.replace(/\.html$/, '') || '/').replace(/\/index$/, '') || '/';
+const canonical = new URL(pathname, Astro.site);
 const image = new URL(business.imagePath, Astro.site);
 
 /* HealthAndBeautyBusiness is a LocalBusiness subtype. Shared by every page.
