@@ -2,10 +2,13 @@
 # Pages that are not built yet use a temporary 302.
 
 # Permanent
+/home / 301
+/home/ / 301
 /home-sports-massage-cardiff-injury-recovery-rehabilitation / 301
+/home-sports-massage-cardiff-injury-recovery-rehabilitation/ / 301
 # The sports massage page is not in this branch. One hop to the treatments section.
 # The inner-pages branch points this at the built sports massage page.
-/treatments-sports-massage-cardiff-injury-prevention-rehabilitation /#treatments 301
+/treatments-sports-massage-cardiff-injury-prevention-rehabilitation /#treatments 302
 
 # Temporary until those pages exist
 /about-sports-massage-cardiff-injury-prevention-rehabilitation /#about 302

@@ -22,26 +22,26 @@ h3{font-size:32px;line-height:1}
 .arrow{width:18px;height:18px}
 /* util bar */
 .util{background:var(--copper);color:var(--ink);font:600 15px/1 var(--sans)}
-.util .wrap{display:flex;justify-content:space-between;align-items:center;height:40px}
-.util a{color:var(--ink);font-weight:700;text-decoration:none}
+.util .wrap{display:flex;justify-content:space-between;align-items:center;min-height:44px;gap:8px}
+.util a{color:var(--ink);font-weight:700;text-decoration:none;display:inline-flex;align-items:center;min-height:44px}
 /* header */
 .site-header{position:sticky;top:0;z-index:20;background:var(--ink);border-bottom:1px solid var(--line)}
 .bar{display:flex;align-items:center;gap:var(--s4);height:80px;max-width:1380px}
-.brand{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--text);margin-right:auto;flex:none}
+.brand{display:flex;align-items:center;gap:14px;min-height:44px;text-decoration:none;color:var(--text);margin-right:auto;flex:none}
 .brand img{width:60px;height:auto;max-width:100%;object-fit:contain;flex:none}
 .brand span{font:700 24px/1 var(--cond);letter-spacing:.07em;text-transform:uppercase;white-space:nowrap}
 .brand span b{color:var(--copper);font-weight:700}
 .brand .wm{line-height:.98}.brand .wm>span{display:block}
 .nav{display:flex;align-items:center;gap:var(--s1)}
 .nav>li{position:relative}
-.nav a,.nav button{display:flex;gap:6px;align-items:center;padding:10px 12px;font:500 16px/1 var(--sans);color:var(--text);text-decoration:none;background:none;border:0;cursor:pointer;white-space:nowrap}
+.nav a,.nav button{display:flex;gap:6px;align-items:center;min-height:44px;min-width:44px;padding:10px 12px;font:500 16px/1 var(--sans);color:var(--text);text-decoration:none;background:none;border:0;cursor:pointer;white-space:nowrap}
 .nav a:hover,.nav button:hover{color:var(--copper)}
 .nav a[aria-current]{color:var(--copper);box-shadow:inset 0 -3px 0 var(--copper)}
 .chev{width:12px;height:12px}
 [aria-expanded=true] .chev{transform:rotate(180deg)}
 .dd-menu{display:none;position:absolute;top:calc(100% + 22px);left:0;width:560px;background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--copper);padding:var(--s3);grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s1)}
 [aria-expanded=true]+.dd-menu{display:grid}
-.dd-menu a{display:block;padding:14px;font-weight:600;white-space:normal}
+.dd-menu a{display:flex;flex-direction:column;justify-content:center;min-height:44px;padding:14px;font-weight:600;white-space:normal}
 .dd-menu a:hover{background:var(--panel2)}
 .dd-menu a span{display:block;font-weight:400;font-size:15px;color:var(--muted);margin-top:6px;line-height:1.45}
 .dd-menu a b{font:700 14px/1 var(--cond);color:var(--copper);letter-spacing:.1em;margin-right:8px}
@@ -121,6 +121,7 @@ section.block{padding:var(--s10) 0}
 .p-row p{color:var(--muted);font-size:16px;margin-top:6px;text-transform:none}
 .p-row .amt{font:800 56px/1 var(--cond);color:var(--copper)}
 .p-note{margin-top:var(--s5);color:var(--muted)}
+.p-note a{display:inline-flex;align-items:center;min-height:44px;min-width:44px}
 /* location */
 .loc-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:var(--s4)}
 .loc-card{background:var(--panel);padding:var(--s7);border-radius:var(--r)}
@@ -140,7 +141,7 @@ address{font-style:normal;font-size:19px;line-height:1.6;margin-bottom:var(--s5)
 .contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:var(--s9)}
 .contact h2{margin:var(--s4) 0 var(--s5)}
 .contact p{color:var(--muted);margin-bottom:var(--s5)}
-.cl a{display:block;font:700 40px/1.1 var(--cond);color:var(--text);text-decoration:none;text-transform:uppercase;margin-bottom:var(--s2)}
+.cl a{display:flex;align-items:center;min-height:44px;font:700 40px/1.1 var(--cond);color:var(--text);text-decoration:none;text-transform:uppercase;margin-bottom:var(--s2)}
 .cl a.em{font:600 20px/1.4 var(--sans);text-transform:none;color:var(--copper);overflow-wrap:break-word}
 form{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s5)}
 .field{display:flex;flex-direction:column;gap:8px;min-width:0}
@@ -171,7 +172,7 @@ footer li{margin-bottom:10px}
   .bar .btn{flex:none}
   .menu-open .mobile-nav{display:block}
   .mobile-nav{background:var(--panel);padding:var(--s3) var(--s7) var(--s6);border-top:1px solid var(--line)}
-  .mobile-nav a{display:block;padding:14px 0;border-bottom:1px solid var(--line);font:700 26px/1 var(--cond);text-transform:uppercase;color:var(--text);text-decoration:none}
+  .mobile-nav a{display:flex;align-items:center;min-height:44px;padding:14px 0;border-bottom:1px solid var(--line);font:700 26px/1 var(--cond);text-transform:uppercase;color:var(--text);text-decoration:none}
   .mobile-nav .sub a{font:500 17px/1.2 var(--sans);text-transform:none;color:var(--muted);padding-left:16px}
   .mobile-nav .btn{display:flex;margin-top:var(--s5);border:0;color:var(--ink);font:700 16px/1 var(--sans)}
 }
@@ -238,7 +239,7 @@ footer li{margin-bottom:10px}
 .crumbs ol{display:flex;flex-wrap:wrap;align-items:center;list-style:none;font:500 15px/1.3 var(--sans);color:var(--muted)}
 .crumbs li{display:flex;align-items:center}
 .crumbs li+li::before{content:"/";margin:0 10px;color:var(--muted)}
-.crumbs a{color:var(--text);display:inline-flex;align-items:center;min-height:44px}
+.crumbs a{color:var(--text);display:inline-flex;align-items:center;justify-content:center;min-height:44px;min-width:44px;padding:0 4px}
 .crumbs [aria-current]{color:var(--muted)}
 /* page hero */
 .page-hero{border-bottom:1px solid var(--line);padding:var(--s5) 0 var(--s9)}
@@ -389,6 +390,12 @@ footer li{margin-bottom:10px}
 .form-success p{color:var(--muted);margin-bottom:var(--s3);max-width:52ch}
 .state-success .form-success{display:block}
 .state-success form,.state-success .form-card>p{display:none}
+.send-error{display:none;border:2px solid var(--err);border-left-width:6px;border-radius:var(--r);padding:var(--s5);margin-bottom:var(--s6);background:var(--ink)}
+.send-error.is-shown{display:block}
+.send-error h3{font:700 26px/1 var(--cond);margin-bottom:var(--s3)}
+.send-error p{color:var(--text);margin:0}
+.send-error p{margin-top:8px}
+.send-error a{display:flex;align-items:center;min-height:44px;min-width:44px;width:fit-content;font-weight:600}
 
 @media (max-width:1180px){.g-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.who,.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.steps li:nth-child(2){border-right:0;margin-right:0}.steps li{padding-bottom:var(--s5)}.b-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:960px){
@@ -427,12 +434,14 @@ footer li{margin-bottom:10px}
 }
 @media (max-width:380px){.page-hero h1{font-size:52px}.page-hero h1 .sub{font-size:28px}}
 
-/* Tap targets: invisible 44px hit areas on small header/footer links (layout- and paint-neutral, so the approved B2 look is unchanged) */
-.skip{display:inline-flex;align-items:center;min-height:44px}
-.util a,.brand,.nav a,.nav button,.f-bottom a,footer .f-grid a{position:relative}
-.util a::after,.brand::after,.nav a::after,.nav button::after,.f-bottom a::after,footer .f-grid a::after{content:"";position:absolute;left:50%;top:50%;width:max(100%,44px);height:max(100%,44px);transform:translate(-50%,-50%)}
-footer .f-contact li{margin-bottom:18.5px}footer .f-contact li:last-child{margin-bottom:10px} /* 44px pitch so each 44px hit area fits without overlap */
-.cl a{position:relative}.cl a::after{content:"";position:absolute;left:0;right:0;top:50%;height:max(100%,44px);transform:translateY(-50%)} /* homepage contact phone/email: 44px hit area, look unchanged */
+/* Hit areas are the element's own box, at least 44px, with a gap so neighbours do not overlap. */
+.skip{display:inline-flex;align-items:center;min-height:44px;min-width:44px}
+.f-links{display:flex;flex-wrap:wrap;align-items:center;row-gap:8px}
+.f-links li{display:flex;align-items:center}
+.f-links li+li::before{content:"·";margin:0 10px;color:var(--muted)}
+.f-links a,.f-contact a{display:inline-flex;align-items:center;min-height:44px;min-width:44px}
+.f-contact li{margin-bottom:8px}
+.f-contact li:last-child{margin-bottom:0}
 
 /* Focus and skip-link fixes so every control shows a visible ring. */
 .skip:focus,.skip:focus-visible{left:16px;top:16px;z-index:100;background:var(--copper);color:var(--ink);padding:12px 20px;text-decoration:none;outline-color:var(--ink)}
