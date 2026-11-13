@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { business, reviews, routes } from '../data/site.js';
+
+const title = 'Sports massage reviews in Cardiff | Sports Massage Therapy Cymru';
+const description =
+  'What clients say about Sports Massage Therapy Cymru in Cardiff. Over 200 five-star Google reviews.';
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="block reviews" aria-labelledby="r-h">
+    <div class="wrap">
+      <Breadcrumbs items={[{ href: routes.home, label: 'Home' }, { label: 'Reviews' }]} />
+      <div class="head">
+        <div>
+          <p class="kicker">Reviews</p>
+          <h1 id="r-h">What clients say</h1>
+          <p class="g-rating">
+            <span class="star" aria-hidden="true">★</span> Over 200 five-star <span class="nw">Google reviews</span>
+          </p>
+        </div>
+        <div class="rev-actions">
+          <a class="g-link" href={business.googleProfile} target="_blank" rel="noopener">
+            See all on Google<span class="vh"> (opens in a new tab)</span> <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+      <!-- Reviews are plain crawlable HTML, copied word for word. No Review or AggregateRating schema.
+           Add another card by adding one object to the reviews list in src/data/site.js. -->
+      <div class="reviews-grid">
+        {
+          reviews.map((review) => (
+            <figure class="review">
+              <div class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
+              <blockquote>
+                {(review.paragraphs ?? [review.text]).map((paragraph) => <p>{paragraph}</p>)}
+              </blockquote>
+              <figcaption>
+                <cite>{review.name}</cite>
+                <span class="rv-meta">
+                  <span class="g-mark" aria-hidden="true">G</span>
+                  Google review
+                  {
+                    review.when && (
+                      <>
+                        <span class="rv-dot" aria-hidden="true">·</span>
+                        <span class="rv-date">{review.when}</span>
+                      </>
+                    )
+                  }
+                </span>
+              </figcaption>
+            </figure>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>

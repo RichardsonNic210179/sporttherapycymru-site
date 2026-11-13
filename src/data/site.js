@@ -91,8 +91,6 @@ export const prices = [
   },
 ];
 
-export const fromPrice = Math.min(...prices.map((price) => price.amount));
-
 export const priceGroups = [
   { id: 'sm-h', title: 'Sports massage', group: 'sports' },
   { id: 'do-h', title: 'Deep tissue + deep oscillation', group: 'oscillation' },
@@ -109,7 +107,7 @@ export const routes = {
   location: '/location-sports-massage-cardiff-injury-prevention-rehabilitation',
   contact: '/book-sports-massage-cardiff-injury-prevention-rehabilitation',
   about: '/#about',
-  reviews: '/#reviews',
+  reviews: '/reviews-sports-massage-cardiff-injury-prevention-rehabilitation',
   treatments: '/#treatments',
 };
 
@@ -179,6 +177,13 @@ export const reviews = [
     name: 'Christopher',
     when: 'about 4 months ago',
     text: 'I have seen Nick a few times now for physical therapy. He is extremely friendly, knowledgeable and understands which MSK areas to target. The combination of massage therapy, cupping and dry needling has helped relieved chronic pain and tightness with old rugby injuries. 100% would recommend',
+  },
+  {
+    name: 'Cerys Ballett',
+    paragraphs: [
+      'Nic is AMAZING!!! I’ve been going to him for a while now and I wouldn’t go to anyone else. He takes the time to understand my specific needs and tailors the massage to address the areas I am having trouble with. After every session, I feel a significant reduction in muscle soreness and my range of motion improves noticeably.',
+      'What sets Nic apart is his genuine care and professionalism. whether you’re an athlete or just dealing with every day aches and pains, this is the place to go for effective, high-quality sports massage therapy.',
+    ],
   },
 ];
 
