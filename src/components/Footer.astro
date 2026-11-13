@@ -1,0 +1,67 @@
+---
+import Brand from './Brand.astro';
+import { business, footerNav } from '../data/site.js';
+
+const year = new Date().getFullYear();
+---
+
+<footer>
+  <div class="wrap">
+    <div class="f-top">
+      <h2>Move better. Recover faster.</h2>
+      <a class="btn btn-primary" href={business.booking}>Book now</a>
+    </div>
+    <div class="f-grid">
+      <div>
+        <Brand width={52} />
+        <div class="social">
+          <a href={business.facebook} aria-label="Facebook (opens in a new tab)" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor" d="M14 8h3V4h-3c-2.8 0-4 1.8-4 4.3V10H7v4h3v8h4v-8h3l1-4h-4V8.6c0-.4.3-.6.6-.6z" />
+            </svg>
+          </a>
+          <a href={business.instagram} aria-label="Instagram (opens in a new tab)" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2" />
+              <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2" />
+              <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h3>VISIT</h3>
+        <address>
+          {business.address.street}<br />
+          {business.address.locality}, {business.address.city}<br />
+          {business.address.postcode}
+        </address>
+      </div>
+      <div>
+        <h3>HOURS</h3>
+        <p>
+          {business.hoursLabel.weekday}<br />
+          {business.hoursLabel.weekend}
+        </p>
+      </div>
+      <div>
+        <h3>CONTACT</h3>
+        <ul class="f-contact">
+          <li><a href={`tel:${business.phoneTel}`}>{business.phoneDisplay}</a></li>
+          <li><a href={`mailto:${business.email}`}>Email</a></li>
+          <li><a href={business.booking}>Book online</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <span>© {year} {business.name}</span>
+      <ul class="f-links">
+        {footerNav.map((item) => (
+          <li>
+            <a href={item.href}>{item.label}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</footer>
