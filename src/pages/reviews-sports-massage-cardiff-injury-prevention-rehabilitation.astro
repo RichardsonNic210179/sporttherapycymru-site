@@ -34,15 +34,21 @@ const description =
             <figure class="review">
               <div class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
               <blockquote>
-                <p>{review.text}</p>
+                {(review.paragraphs ?? [review.text]).map((paragraph) => <p>{paragraph}</p>)}
               </blockquote>
               <figcaption>
                 <cite>{review.name}</cite>
                 <span class="rv-meta">
                   <span class="g-mark" aria-hidden="true">G</span>
                   Google review
-                  <span class="rv-dot" aria-hidden="true">·</span>
-                  <span class="rv-date">{review.when}</span>
+                  {
+                    review.when && (
+                      <>
+                        <span class="rv-dot" aria-hidden="true">·</span>
+                        <span class="rv-date">{review.when}</span>
+                      </>
+                    )
+                  }
                 </span>
               </figcaption>
             </figure>
