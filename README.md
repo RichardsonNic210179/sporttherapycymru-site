@@ -28,4 +28,4 @@ Preview the build locally:
 npm run preview
 ```
 
-The build is a plain static site in `dist/`. `public/_redirects` is a Netlify redirect file for the live URLs that do not have a page yet.
+The build is a plain static site in `dist/`. `public/_redirects` sends old live URLs to a built page or a homepage section in one hop. The contact page uses Netlify Forms. In the Netlify dashboard, turn on form notifications for the `contact` form so messages reach massagetherapycymru@gmail.com.

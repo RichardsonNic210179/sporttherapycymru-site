@@ -4,6 +4,7 @@ import { business, mainNav } from '../data/site.js';
 
 const path = Astro.url.pathname.replace(/\.html$/, '').replace(/\/index$/, '').replace(/\/$/, '') || '/';
 const isCurrent = (href) => (href.replace(/\/$/, '') || '/') === path;
+const inSection = (item) => item.children?.some((child) => isCurrent(child.href));
 ---
 
 <div class="util">
@@ -21,7 +22,14 @@ const isCurrent = (href) => (href.replace(/\/$/, '') || '/') === path;
           mainNav.map((item) =>
             item.children ? (
               <li>
-                <button type="button" data-dd aria-expanded="false" aria-controls="dd-t" aria-haspopup="true">
+                <button
+                  type="button"
+                  data-dd
+                  aria-expanded="false"
+                  aria-controls="dd-t"
+                  aria-haspopup="true"
+                  class={inSection(item) ? 'is-current' : undefined}
+                >
                   {item.label}
                   <svg class="chev" viewBox="0 0 12 12" aria-hidden="true">
                     <path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" />
@@ -31,7 +39,7 @@ const isCurrent = (href) => (href.replace(/\/$/, '') || '/') === path;
                   {
                     item.children.map((child) => (
                       <li>
-                        <a href={child.href}>
+                        <a href={child.href} aria-current={isCurrent(child.href) ? 'page' : undefined}>
                           <b>{child.num}</b>
                           {child.title}
                           <span>{child.menu}</span>
@@ -68,7 +76,7 @@ const isCurrent = (href) => (href.replace(/\/$/, '') || '/') === path;
             <a href={item.href}>{item.label}</a>
             <div class="sub">
               {item.children.map((child) => (
-                <a href={child.href}>{child.title}</a>
+                <a href={child.href} aria-current={isCurrent(child.href) ? 'page' : undefined}>{child.title}</a>
               ))}
             </div>
           </>

@@ -1,0 +1,84 @@
+---
+import { Picture } from 'astro:assets';
+import { images } from '../assets/images.js';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Arrow from '../components/Arrow.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { business, routes } from '../data/site.js';
+---
+
+<BaseLayout
+  title="Book a Sports Massage in Cardiff | Contact | Sports Massage Therapy Cymru"
+  description="Book a sports massage in Cardiff online, or send a question. Call 07735 177801. Open 7 days in Birchgrove, Cardiff."
+>
+  <section class="page-hero compact">
+    <div class="wrap">
+      <Breadcrumbs items={[{ href: routes.home, label: 'Home' }, { label: 'Contact & book' }]} />
+      <div class="ph-grid c-hero">
+        <div>
+          <p class="kicker">Contact &amp; book</p>
+          <h1>
+            Book a sports massage
+            <span class="sub">or ask me a question</span>
+          </h1>
+        </div>
+        <div class="book-card">
+          <div>
+            <p class="kicker">Fastest way</p>
+            <h2 id="bk-h">Book online</h2>
+            <p>See available times and book your appointment through Setmore. Open 7 days, from 8:30am.</p>
+          </div>
+          <div>
+            <a class="btn btn-primary" href={business.booking}>Book now <Arrow /></a>
+            <p class="via">Secure booking via Setmore</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="form-h">
+    <div class="wrap c-grid">
+      <div class="form-card">
+        <h2 id="form-h">Send a message</h2>
+        <ContactForm formName="contact" showHear showBookButton={false} />
+      </div>
+      <div class="c-side">
+        <Picture
+          src={images.contactPortrait}
+          alt="Nic, the therapist, standing with arms crossed"
+          formats={['avif', 'webp']}
+          widths={[480, 800, 1200]}
+          sizes="(max-width: 960px) 100vw, 34vw"
+        />
+        <div class="info">
+          <h3>Call or text</h3>
+          <a class="v" href={`tel:${business.phoneTel}`}>{business.phoneDisplay}</a>
+        </div>
+        <div class="info">
+          <h3>Email</h3>
+          <a class="v em" href={`mailto:${business.email}`}>massagetherapycymru@<wbr />gmail.com</a>
+          <p>I always reply to all queries, so please check junk if you're expecting a reply email and don't see one.</p>
+        </div>
+        <div class="info">
+          <h3>Opening hours</h3>
+          <table class="hours">
+            <caption class="vh">Opening hours</caption>
+            <tr><th scope="row">Monday – Friday</th><td>8:30am – 9:30pm</td></tr>
+            <tr><th scope="row">Saturday – Sunday</th><td>8:30am – 6:30pm</td></tr>
+          </table>
+        </div>
+        <div class="info">
+          <h3>Address</h3>
+          <address>
+            {business.address.street}<br />
+            {business.address.locality}, {business.address.city} {business.address.postcode}
+          </address>
+          <a class="dir" href={routes.location}>Location &amp; directions</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
