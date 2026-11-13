@@ -49,13 +49,16 @@ export const prices = [
   {
     minutes: 45,
     name: 'Sports massage',
+    group: 'sports',
     summary: 'Sports massage appointment.',
+    detail: 'Sports massage appointment. Price includes all treatments.',
     amount: 45,
     onHomepage: true,
   },
   {
     minutes: 60,
     name: 'Sports massage',
+    group: 'sports',
     summary: 'Sports massage appointment.',
     amount: 55,
     onHomepage: true,
@@ -63,6 +66,7 @@ export const prices = [
   {
     minutes: 60,
     name: 'Deep tissue + deep oscillation',
+    group: 'oscillation',
     summary: 'Deep tissue and deep oscillation.',
     amount: 70,
     onHomepage: true,
@@ -70,6 +74,7 @@ export const prices = [
   {
     minutes: 90,
     name: 'Sports massage',
+    group: 'sports',
     summary:
       'Sports massage. Book if you need emphasis on specific body parts and require full body treatments.',
     amount: 80,
@@ -78,6 +83,7 @@ export const prices = [
   {
     minutes: 90,
     name: 'Deep tissue and deep oscillation',
+    group: 'oscillation',
     summary:
       '90 minutes deep tissue and deep oscillation. Great if you train regularly and need full body treatment.',
     amount: 95,
@@ -87,18 +93,24 @@ export const prices = [
 
 export const fromPrice = Math.min(...prices.map((price) => price.amount));
 
-/**
- * Only routes that exist in this build, or homepage sections.
- * Live URLs for unbuilt pages are redirects in public/_redirects, not nav links.
- */
+export const priceGroups = [
+  { id: 'sm-h', title: 'Sports massage', group: 'sports' },
+  { id: 'do-h', title: 'Deep tissue + deep oscillation', group: 'oscillation' },
+].map((group) => ({
+  ...group,
+  items: prices.filter((price) => price.group === group.group),
+}));
+
+/** Built pages, plus homepage sections for content that has no page yet. */
 export const routes = {
   home: '/',
-  treatments: '/#treatments',
-  prices: '/#prices',
+  sportsMassage: '/benefits-of-sports-massage-cardiff-injury-recovery-rehabilitation',
+  prices: '/prices',
+  location: '/location-sports-massage-cardiff-injury-prevention-rehabilitation',
+  contact: '/book-sports-massage-cardiff-injury-prevention-rehabilitation',
   about: '/#about',
   reviews: '/#reviews',
-  location: '/#location',
-  contact: '/#contact',
+  treatments: '/#treatments',
 };
 
 export const treatments = [
@@ -107,7 +119,7 @@ export const treatments = [
     title: 'Sports Massage',
     menu: 'Deep tissue work for recovery, mobility and injury prevention.',
     card: 'Slow, firm deep tissue work to break down adhesions and restore muscle function.',
-    href: routes.treatments,
+    href: routes.sportsMassage,
     image: 'elbow',
   },
   {
@@ -138,17 +150,17 @@ export const treatments = [
 
 export const mainNav = [
   { label: 'Home', href: routes.home },
-  { label: 'Treatments', href: routes.treatments },
+  { label: 'Sports massage', href: routes.sportsMassage },
   { label: 'Prices', href: routes.prices },
-  { label: 'About', href: routes.about },
-  { label: 'Reviews', href: routes.reviews },
   { label: 'Location', href: routes.location },
   { label: 'Contact', href: routes.contact },
 ];
 
 export const footerNav = [
-  { label: 'Treatments', href: routes.treatments },
+  { label: 'Sports massage', href: routes.sportsMassage },
   { label: 'Prices', href: routes.prices },
+  { label: 'Location', href: routes.location },
+  { label: 'Contact', href: routes.contact },
 ];
 
 /** Reviews #2, #9 and #3 from google-reviews-picks.md, word for word. */

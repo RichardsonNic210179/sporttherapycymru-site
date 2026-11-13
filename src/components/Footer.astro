@@ -59,6 +59,7 @@ const year = new Date().getFullYear();
         {footerNav.map((item) => (
           <li>
             <a href={item.href}>{item.label}</a>
+            <span aria-hidden="true">·</span>
           </li>
         ))}
       </ul>
