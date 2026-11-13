@@ -91,8 +91,6 @@ export const prices = [
   },
 ];
 
-export const fromPrice = Math.min(...prices.map((price) => price.amount));
-
 export const priceGroups = [
   { id: 'sm-h', title: 'Sports massage', group: 'sports' },
   { id: 'do-h', title: 'Deep tissue + deep oscillation', group: 'oscillation' },
@@ -109,7 +107,7 @@ export const routes = {
   location: '/location-sports-massage-cardiff-injury-prevention-rehabilitation',
   contact: '/book-sports-massage-cardiff-injury-prevention-rehabilitation',
   about: '/#about',
-  reviews: '/#reviews',
+  reviews: '/reviews-sports-massage-cardiff-injury-prevention-rehabilitation',
   treatments: '/#treatments',
 };
 

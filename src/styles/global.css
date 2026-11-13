@@ -60,7 +60,7 @@ h3{font-size:32px;line-height:1}
 .hero-tag{position:absolute;right:var(--s7);bottom:var(--s7);background:rgba(15,17,19,.88);border-left:3px solid var(--copper);padding:var(--s4) var(--s5);font-size:15px;color:var(--muted)}
 .hero-tag b{display:block;font:700 22px/1.1 var(--cond);text-transform:uppercase;color:var(--text);letter-spacing:.04em}@media (min-width:641px) and (max-width:900px){.hero-tag{display:none}}
 /* stats */
-.stats ul{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.stats ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
 .stats li{padding:var(--s7) var(--s5) var(--s7) 0;border-right:1px solid var(--line)}
 .stats li+li{padding-left:var(--s6)}
 .stats li:last-child{border-right:0}
@@ -97,7 +97,6 @@ section.block{padding:var(--s10) 0}
 .about .big{font:600 26px/1.35 var(--sans);color:var(--bone-ink);letter-spacing:-.01em;margin-bottom:var(--s5)}
 .chips{display:flex;flex-wrap:wrap;gap:var(--s2);margin:var(--s5) 0 var(--s6)}
 .chips li{border:1.5px solid var(--bone-ink);padding:8px 14px;font:600 15px/1 var(--sans);border-radius:var(--r-sm)}
-.about .btn-dark{background:var(--bone-ink);color:var(--bone)}
 .about :focus-visible{outline-color:var(--copper-text)}
 /* reviews (B2: D's "What clients say" layout, restyled for B) */
 .reviews{border-top:1px solid var(--line)}
@@ -180,7 +179,7 @@ footer li{margin-bottom:10px}
   .mobile-nav .btn{display:flex;margin-top:var(--s5);border:0;color:var(--ink);font:700 16px/1 var(--sans)}
 }
 @media (max-width:860px){.util .hide-s{display:none}}
-@media (max-width:960px){.tiles{grid-template-columns:1fr 1fr}.about-grid,.contact-grid,.loc-grid,.reviews-grid,.head{grid-template-columns:minmax(0,1fr)}.p-row{grid-template-columns:minmax(0,1fr) auto auto;gap:var(--s2) var(--s5)}.p-row .dur{grid-column:1/-1}.reviews .head>.rev-actions{justify-self:start;row-gap:var(--s2)}.head>p{justify-self:start}.stats ul{grid-template-columns:repeat(2,minmax(0,1fr))}.stats li{padding:var(--s6) var(--s4) var(--s6) 0!important;border-right:0;border-bottom:1px solid var(--line)}.stats li:nth-child(even){padding-left:var(--s5)!important;border-left:1px solid var(--line)}.f-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:960px){.tiles{grid-template-columns:1fr 1fr}.about-grid,.contact-grid,.loc-grid,.reviews-grid,.head{grid-template-columns:minmax(0,1fr)}.p-row{grid-template-columns:minmax(0,1fr) auto auto;gap:var(--s2) var(--s5)}.p-row .dur{grid-column:1/-1}.reviews .head>.rev-actions{justify-self:start;row-gap:var(--s2)}.head>p{justify-self:start}.stats ul{grid-template-columns:repeat(2,minmax(0,1fr))}.stats li{padding:var(--s6) var(--s4) var(--s6) 0!important;border-right:1px solid var(--line);border-bottom:0}.stats li:nth-child(even){padding-left:var(--s5)!important;border-left:0}.stats li:last-child{border-right:0}.f-grid{grid-template-columns:1fr 1fr}}
 @media (max-width:640px){
   .wrap{padding:0 20px}
   h1{font-size:64px}
@@ -203,8 +202,9 @@ footer li{margin-bottom:10px}
   .hero-cta{flex-direction:column}
   .hero-tag{display:none}
   .stats ul{grid-template-columns:1fr 1fr}
-  .stats li{padding:var(--s5) var(--s3) var(--s5) 0!important;border-right:0;border-bottom:1px solid var(--line)}
-  .stats li:nth-child(even){padding-left:var(--s4)!important;border-left:1px solid var(--line)}
+  .stats li{padding:var(--s5) var(--s3) var(--s5) 0!important;border-right:1px solid var(--line);border-bottom:0}
+  .stats li:nth-child(even){padding-left:var(--s4)!important;border-left:0}
+  .stats li:last-child{border-right:0}
   .stats .n{font-size:48px}
   section.block{padding:var(--s8) 0}
   .head{gap:var(--s4);margin-bottom:var(--s6)}.head p{justify-self:start}
@@ -464,3 +464,5 @@ footer li{margin-bottom:10px}
 .hero-photo picture,.tile .ph picture,.about-ph picture,.ph-media picture,.room picture,.c-side picture{display:block;width:100%;height:100%}
 .hero-photo picture{position:absolute;inset:0}
 @media (max-width:1100px) and (min-width:641px){.brand img{width:48px}}
+section.reviews-tease{padding:var(--s7) 0;border-top:1px solid var(--line)}
+section.reviews-tease a{display:inline-flex;align-items:center;min-height:44px;font-weight:600}
