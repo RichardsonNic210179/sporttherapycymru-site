@@ -150,6 +150,7 @@ export const mainNav = [
   { label: 'Home', href: routes.home },
   { label: 'Sports massage', href: routes.sportsMassage },
   { label: 'Prices', href: routes.prices },
+  { label: 'Reviews', href: routes.reviews },
   { label: 'Location', href: routes.location },
   { label: 'Contact', href: routes.contact },
 ];
