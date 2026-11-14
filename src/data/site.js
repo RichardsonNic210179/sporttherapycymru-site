@@ -179,10 +179,14 @@ export const reviews = [
     text: 'I have seen Nick a few times now for physical therapy. He is extremely friendly, knowledgeable and understands which MSK areas to target. The combination of massage therapy, cupping and dry needling has helped relieved chronic pain and tightness with old rugby injuries. 100% would recommend',
   },
   {
-    name: 'Cerys Ballett',
+    name: 'Jon Davies',
+    when: 'about 3 months ago',
     paragraphs: [
-      'Nic is AMAZING!!! I’ve been going to him for a while now and I wouldn’t go to anyone else. He takes the time to understand my specific needs and tailors the massage to address the areas I am having trouble with. After every session, I feel a significant reduction in muscle soreness and my range of motion improves noticeably.',
-      'What sets Nic apart is his genuine care and professionalism. whether you’re an athlete or just dealing with every day aches and pains, this is the place to go for effective, high-quality sports massage therapy.',
+      "I've now been to see Nic twice, and both sessions have been incredible. I went in with a lower back and glute issue that I've been struggling with for around five years, so I knew it was never going to be a quick fix.",
+      "The treatment has been thorough from the start. I've had deep tissue sports massage (which definitely gets right to the source of the problem!), dry needling, and cupping. Nic doesn't just treat the symptoms—he takes the time to understand what's causing the issue and works to get to the root of it.",
+      "After my first session, the pain in my lower back and glute eased so much that I was finally able to perform my rehabilitation exercises in the gym without the pain that had been holding me back for years. That alone made a huge difference.",
+      "I had my second session yesterday, and I genuinely feel Nic may have finally found the muscle that's been causing the problem all this time. I'm feeling really positive that I'm finally on the right path.",
+      "If you're dealing with a long-term injury or persistent pain, I can't recommend Nic highly enough. He's incredibly knowledgeable, thorough, and genuinely invested in helping you recover properly rather than just providing a temporary fix.",
     ],
   },
 ];
