@@ -189,6 +189,11 @@ export const reviews = [
       "If you're dealing with a long-term injury or persistent pain, I can't recommend Nic highly enough. He's incredibly knowledgeable, thorough, and genuinely invested in helping you recover properly rather than just providing a temporary fix.",
     ],
   },
+  {
+    name: 'Peter Urquhart',
+    when: 'about a month ago',
+    text: "Really impressed with Cardiff Sports Massage Therapy Cymru. Nick is extremely knowledgeable, professional and really takes the time to understand what you need. The treatments I have are perfect for keeping me injury-free and performing at my best with both running and gym training. Highly recommend Nick to anyone looking for quality sports massage and practical advice.",
+  },
 ];
 
 /** Approved about copy. Do not add qualifications beyond this. */
