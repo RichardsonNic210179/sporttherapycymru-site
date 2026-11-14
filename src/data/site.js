@@ -91,8 +91,6 @@ export const prices = [
   },
 ];
 
-export const fromPrice = Math.min(...prices.map((price) => price.amount));
-
 export const priceGroups = [
   { id: 'sm-h', title: 'Sports massage', group: 'sports' },
   { id: 'do-h', title: 'Deep tissue + deep oscillation', group: 'oscillation' },
@@ -109,7 +107,7 @@ export const routes = {
   location: '/location-sports-massage-cardiff-injury-prevention-rehabilitation',
   contact: '/book-sports-massage-cardiff-injury-prevention-rehabilitation',
   about: '/#about',
-  reviews: '/#reviews',
+  reviews: '/reviews-sports-massage-cardiff-injury-prevention-rehabilitation',
   treatments: '/#treatments',
 };
 
@@ -152,6 +150,7 @@ export const mainNav = [
   { label: 'Home', href: routes.home },
   { label: 'Sports massage', href: routes.sportsMassage },
   { label: 'Prices', href: routes.prices },
+  { label: 'Reviews', href: routes.reviews },
   { label: 'Location', href: routes.location },
   { label: 'Contact', href: routes.contact },
 ];
@@ -179,6 +178,22 @@ export const reviews = [
     name: 'Christopher',
     when: 'about 4 months ago',
     text: 'I have seen Nick a few times now for physical therapy. He is extremely friendly, knowledgeable and understands which MSK areas to target. The combination of massage therapy, cupping and dry needling has helped relieved chronic pain and tightness with old rugby injuries. 100% would recommend',
+  },
+  {
+    name: 'Jon Davies',
+    when: 'about 3 months ago',
+    paragraphs: [
+      "I've now been to see Nic twice, and both sessions have been incredible. I went in with a lower back and glute issue that I've been struggling with for around five years, so I knew it was never going to be a quick fix.",
+      "The treatment has been thorough from the start. I've had deep tissue sports massage (which definitely gets right to the source of the problem!), dry needling, and cupping. Nic doesn't just treat the symptoms—he takes the time to understand what's causing the issue and works to get to the root of it.",
+      "After my first session, the pain in my lower back and glute eased so much that I was finally able to perform my rehabilitation exercises in the gym without the pain that had been holding me back for years. That alone made a huge difference.",
+      "I had my second session yesterday, and I genuinely feel Nic may have finally found the muscle that's been causing the problem all this time. I'm feeling really positive that I'm finally on the right path.",
+      "If you're dealing with a long-term injury or persistent pain, I can't recommend Nic highly enough. He's incredibly knowledgeable, thorough, and genuinely invested in helping you recover properly rather than just providing a temporary fix.",
+    ],
+  },
+  {
+    name: 'Peter Urquhart',
+    when: 'about a month ago',
+    text: "Really impressed with Cardiff Sports Massage Therapy Cymru. Nick is extremely knowledgeable, professional and really takes the time to understand what you need. The treatments I have are perfect for keeping me injury-free and performing at my best with both running and gym training. Highly recommend Nick to anyone looking for quality sports massage and practical advice.",
   },
 ];
 

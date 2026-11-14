@@ -3,7 +3,7 @@ import { Picture } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ContactForm from '../components/ContactForm.astro';
 import { images } from '../assets/images.js';
-import { bio, business, fromPrice, prices, reviews, routes, treatments } from '../data/site.js';
+import { bio, business, prices, routes, treatments } from '../data/site.js';
 
 const homePrices = prices.filter((price) => price.onHomepage);
 const ninetyFrom = Math.min(...prices.filter((price) => price.minutes === 90).map((price) => price.amount));
@@ -51,8 +51,6 @@ const description =
     <ul class="wrap">
       <li><div class="n">200+<small>reviews</small></div><p>Five-star rated on Google</p></li>
       <li><div class="n">7<small>days</small></div><p>Open every day from 8:30am</p></li>
-      <li><div class="n">4<small>therapies</small></div><p>Combined to suit your goals</p></li>
-      <li><div class="n">£{fromPrice}</div><p>From, every treatment included</p></li>
     </ul>
   </section>
 
@@ -122,48 +120,13 @@ const description =
           <li>Stretching</li>
           <li>Dry needling</li>
         </ul>
-        <a class="btn btn-dark" href={routes.about}>About Nic</a>
       </div>
     </div>
   </section>
 
-  <section class="block reviews" id="reviews" aria-labelledby="r-h">
+  <section class="reviews-tease" id="reviews">
     <div class="wrap">
-      <div class="head">
-        <div>
-          <p class="kicker">Reviews</p>
-          <h2 id="r-h">What clients say</h2>
-          <p class="g-rating"><span class="star" aria-hidden="true">★</span> Over 200 five-star <span class="nw">Google reviews</span></p>
-        </div>
-        <div class="rev-actions">
-          <a class="btn btn-line" href={routes.reviews}>Read all reviews</a>
-          <a class="g-link" href={business.googleProfile} target="_blank" rel="noopener">
-            See all on Google<span class="vh"> (opens in a new tab)</span> <span aria-hidden="true">↗</span>
-          </a>
-        </div>
-      </div>
-      <!-- Reviews are plain crawlable HTML, copied word for word. No Review or AggregateRating schema. -->
-      <div class="reviews-grid">
-        {
-          reviews.map((review) => (
-            <figure class="review">
-              <div class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
-              <blockquote>
-                <p>{review.text}</p>
-              </blockquote>
-              <figcaption>
-                <cite>{review.name}</cite>
-                <span class="rv-meta">
-                  <span class="g-mark" aria-hidden="true">G</span>
-                  Google review
-                  <span class="rv-dot" aria-hidden="true">·</span>
-                  <span class="rv-date">{review.when}</span>
-                </span>
-              </figcaption>
-            </figure>
-          ))
-        }
-      </div>
+      <a href={routes.reviews}>Read my reviews</a>
     </div>
   </section>
 
