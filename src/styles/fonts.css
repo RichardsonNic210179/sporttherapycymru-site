@@ -1,3 +1,27 @@
+/* Size-adjust overrides were calculated from the woff2 files against Arial.
+   Liberation Sans is the metric-compatible Arial used where Arial is not installed. */
+@font-face {
+  font-family: "Barlow Condensed Fallback";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Arial Bold"), local("Liberation Sans Bold");
+  size-adjust: 70.24%;
+  ascent-override: 142.38%;
+  descent-override: 28.48%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "Barlow Condensed Fallback";
+  font-style: normal;
+  font-weight: 800;
+  src: local("Arial Bold"), local("Liberation Sans Bold");
+  size-adjust: 72.04%;
+  ascent-override: 138.81%;
+  descent-override: 27.76%;
+  line-gap-override: 0%;
+}
+
 @font-face {
   font-family: "Barlow Condensed";
   font-style: normal;
@@ -12,6 +36,28 @@
   font-weight: 800;
   font-display: swap;
   src: url("/fonts/barlow-condensed-800.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter Fallback";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Arial"), local("Liberation Sans");
+  size-adjust: 105.31%;
+  ascent-override: 91.99%;
+  descent-override: 22.91%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "Inter Fallback";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Arial Bold"), local("Liberation Sans Bold");
+  size-adjust: 103.77%;
+  ascent-override: 93.36%;
+  descent-override: 23.25%;
+  line-gap-override: 0%;
 }
 
 @font-face {
