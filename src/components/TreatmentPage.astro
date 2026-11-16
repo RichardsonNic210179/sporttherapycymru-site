@@ -155,13 +155,18 @@ const { treatment } = Astro.props;
         }
       </ol>
       <div class="sessions">
-        <p>Sessions of <span class="nw">45, 60 or 90 minutes</span>. Price includes all treatments.</p>
+        <p>
+          Sessions of <span class="nw">45, 60 or 90 minutes</span>. Price includes all treatments.
+          {treatment.sessionsExtra && <> {treatment.sessionsExtra}</>}
+        </p>
         <a class="btn btn-line btn-sm" href={routes.prices}>See all prices</a>
         <a class="btn btn-primary btn-sm" href={business.booking}>Book now</a>
       </div>
     </div>
   </section>
 
+  {
+    treatment.reviews?.length > 0 && (
   <section class="block reviews" aria-labelledby="r-h">
     <div class="wrap">
       <div class="head">
@@ -205,6 +210,8 @@ const { treatment } = Astro.props;
       </div>
     </div>
   </section>
+    )
+  }
 
   <BookBand heading={treatment.book.heading} text={treatment.book.text} />
 

@@ -73,8 +73,19 @@ const inSection = (item) => item.children?.some((child) => isCurrent(child.href)
       mainNav.map((item) =>
         item.children ? (
           <>
-            <a href={item.href}>{item.label}</a>
-            <div class="sub">
+            <button
+              type="button"
+              data-sub
+              aria-expanded={inSection(item) ? 'true' : 'false'}
+              aria-controls="m-treatments"
+              class={inSection(item) ? 'is-current' : undefined}
+            >
+              {item.label}
+              <svg class="chev" viewBox="0 0 12 12" aria-hidden="true">
+                <path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" />
+              </svg>
+            </button>
+            <div class="sub" id="m-treatments" hidden={!inSection(item)}>
               {item.children.map((child) => (
                 <a href={child.href} aria-current={isCurrent(child.href) ? 'page' : undefined}>{child.title}</a>
               ))}
@@ -93,11 +104,54 @@ const inSection = (item) => item.children?.some((child) => isCurrent(child.href)
 
 <script>
   const dropdowns = document.querySelectorAll('[data-dd]');
+  const menuFor = (button) => document.getElementById(button.getAttribute('aria-controls') || '');
+  const linksIn = (menu) => (menu ? [...menu.querySelectorAll('a')] : []);
+
   dropdowns.forEach((button) => {
+    const menu = menuFor(button);
     button.addEventListener('click', () => {
       const open = button.getAttribute('aria-expanded') === 'true';
       dropdowns.forEach((other) => other.setAttribute('aria-expanded', 'false'));
       button.setAttribute('aria-expanded', String(!open));
+    });
+    button.addEventListener('keydown', (event) => {
+      if (event.key !== 'ArrowDown' && event.key !== 'ArrowUp') return;
+      event.preventDefault();
+      dropdowns.forEach((other) => other.setAttribute('aria-expanded', 'false'));
+      button.setAttribute('aria-expanded', 'true');
+      const links = linksIn(menu);
+      (event.key === 'ArrowDown' ? links[0] : links[links.length - 1])?.focus();
+    });
+    menu?.addEventListener('keydown', (event) => {
+      const links = linksIn(menu);
+      const index = links.indexOf(document.activeElement);
+      if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+        event.preventDefault();
+        const next = event.key === 'ArrowDown' ? index + 1 : index - 1;
+        links[(next + links.length) % links.length]?.focus();
+      }
+      if (event.key === 'Home') {
+        event.preventDefault();
+        links[0]?.focus();
+      }
+      if (event.key === 'End') {
+        event.preventDefault();
+        links[links.length - 1]?.focus();
+      }
+      if (event.key === 'Escape') {
+        event.stopPropagation();
+        button.setAttribute('aria-expanded', 'false');
+        button.focus();
+      }
+    });
+  });
+
+  document.querySelectorAll('[data-sub]').forEach((button) => {
+    const panel = document.getElementById(button.getAttribute('aria-controls') || '');
+    button.addEventListener('click', () => {
+      const open = button.getAttribute('aria-expanded') === 'true';
+      button.setAttribute('aria-expanded', String(!open));
+      if (panel) panel.hidden = open;
     });
   });
 

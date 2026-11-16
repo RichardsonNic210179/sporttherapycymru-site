@@ -175,8 +175,11 @@ footer li{margin-bottom:10px}
   .bar .btn{flex:none}
   .menu-open .mobile-nav{display:block}
   .mobile-nav{background:var(--panel);padding:var(--s3) var(--s7) var(--s6);border-top:1px solid var(--line)}
-  .mobile-nav a{display:flex;align-items:center;min-height:44px;padding:14px 0;border-bottom:1px solid var(--line);font:700 26px/1 var(--cond);text-transform:uppercase;color:var(--text);text-decoration:none}
-  .mobile-nav .sub a{font:500 17px/1.2 var(--sans);text-transform:none;color:var(--muted);padding-left:16px}
+  .mobile-nav a:not(.btn),.mobile-nav>button{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:44px;padding:14px 0;border:0;border-bottom:1px solid var(--line);background:none;font:700 26px/1 var(--cond);text-transform:uppercase;color:var(--text);text-decoration:none;text-align:left;cursor:pointer}
+  .mobile-nav>button .chev{width:16px;height:16px;flex:none}
+  .mobile-nav>button.is-current{color:var(--copper)}
+  .mobile-nav .sub[hidden]{display:none}
+  .mobile-nav .sub a{font:500 17px/1.2 var(--sans);text-transform:none;color:var(--muted);padding-left:16px;justify-content:flex-start}
   .mobile-nav .btn{display:flex;margin-top:var(--s5);border:0;color:var(--ink);font:700 16px/1 var(--sans)}
 }
 @media (max-width:860px){.util .hide-s{display:none}}
@@ -238,7 +241,7 @@ footer li{margin-bottom:10px}
    INNER PAGES (added for the inner-page templates; homepage does not use these)
    ===================================================================== */
 .nav button.is-current{color:var(--copper);box-shadow:inset 0 -3px 0 var(--copper)}
-.mobile-nav a[aria-current]{color:var(--copper)}
+.mobile-nav a[aria-current],.mobile-nav button.is-current{color:var(--copper)}
 /* breadcrumb */
 .crumbs ol{display:flex;flex-wrap:wrap;align-items:center;list-style:none;font:500 15px/1.3 var(--sans);color:var(--muted)}
 .crumbs li{display:flex;align-items:center}

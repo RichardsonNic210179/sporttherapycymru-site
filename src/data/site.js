@@ -109,6 +109,10 @@ export const routes = {
   about: '/#about',
   reviews: '/reviews-sports-massage-cardiff-injury-prevention-rehabilitation',
   treatments: '/#treatments',
+  dryNeedling: '/dry-needling-sports-massage-cardiff-injury-prevention-rehabilitation',
+  dryCupping: '/dry-cupping-sports-massage-cardiff-injury-prevention-rehabilitation',
+  deepOscillation:
+    '/deep-oscillation-therapy-sports-massage-cardiff-injury-prevention-rehabilitation-recovery',
 };
 
 export const treatments = [
@@ -125,7 +129,7 @@ export const treatments = [
     title: 'Dry Cupping',
     menu: 'Suction cups to cut tension and boost circulation.',
     card: 'Suction lifts the tissue to reduce muscle tension, speed recovery and improve mobility.',
-    href: routes.treatments,
+    href: routes.dryCupping,
     image: 'cupping',
   },
   {
@@ -133,22 +137,29 @@ export const treatments = [
     title: 'Dry Needling',
     menu: 'Fine needles that release trigger points and stubborn knots.',
     card: 'Thin needles target trigger points for stubborn knots and chronic tightness.',
-    href: routes.treatments,
+    href: routes.dryNeedling,
     image: 'neck',
   },
   {
     num: '04',
     title: 'Deep Oscillation',
+    menuTitle: 'Deep Oscillation Therapy',
     menu: 'Gentle electrostatic therapy for pain and swelling.',
     card: 'Non-invasive electrostatic therapy that eases pain and swelling, even post-surgery.',
-    href: routes.treatments,
+    href: routes.deepOscillation,
     image: 'back',
   },
 ];
 
+/** Page kicker for a treatment, taken from the shared list above. */
+export const treatmentKicker = (href) => `Treatment ${treatments.find((item) => item.href === href).num}`;
+
 export const mainNav = [
   { label: 'Home', href: routes.home },
-  { label: 'Sports massage', href: routes.sportsMassage },
+  {
+    label: 'Treatments',
+    children: treatments.map((item) => ({ ...item, title: item.menuTitle ?? item.title })),
+  },
   { label: 'Prices', href: routes.prices },
   { label: 'Reviews', href: routes.reviews },
   { label: 'Location', href: routes.location },
