@@ -155,10 +155,10 @@ export const mainNav = [
   {
     label: 'Treatments',
     children: [
-      treatments[0],
-      treatments[2],
-      treatments[1],
-      { ...treatments[3], title: 'Deep Oscillation Therapy' },
+      { ...treatments[0], num: '01' },
+      { ...treatments[2], num: '02' },
+      { ...treatments[1], num: '03' },
+      { ...treatments[3], num: '04', title: 'Deep Oscillation Therapy' },
     ],
   },
   { label: 'Prices', href: routes.prices },
