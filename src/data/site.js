@@ -109,6 +109,10 @@ export const routes = {
   about: '/#about',
   reviews: '/reviews-sports-massage-cardiff-injury-prevention-rehabilitation',
   treatments: '/#treatments',
+  dryNeedling: '/dry-needling-sports-massage-cardiff-injury-prevention-rehabilitation',
+  dryCupping: '/dry-cupping-sports-massage-cardiff-injury-prevention-rehabilitation',
+  deepOscillation:
+    '/deep-oscillation-therapy-sports-massage-cardiff-injury-prevention-rehabilitation-recovery',
 };
 
 export const treatments = [
@@ -125,7 +129,7 @@ export const treatments = [
     title: 'Dry Cupping',
     menu: 'Suction cups to cut tension and boost circulation.',
     card: 'Suction lifts the tissue to reduce muscle tension, speed recovery and improve mobility.',
-    href: routes.treatments,
+    href: routes.dryCupping,
     image: 'cupping',
   },
   {
@@ -133,7 +137,7 @@ export const treatments = [
     title: 'Dry Needling',
     menu: 'Fine needles that release trigger points and stubborn knots.',
     card: 'Thin needles target trigger points for stubborn knots and chronic tightness.',
-    href: routes.treatments,
+    href: routes.dryNeedling,
     image: 'neck',
   },
   {
@@ -141,14 +145,22 @@ export const treatments = [
     title: 'Deep Oscillation',
     menu: 'Gentle electrostatic therapy for pain and swelling.',
     card: 'Non-invasive electrostatic therapy that eases pain and swelling, even post-surgery.',
-    href: routes.treatments,
+    href: routes.deepOscillation,
     image: 'back',
   },
 ];
 
 export const mainNav = [
   { label: 'Home', href: routes.home },
-  { label: 'Sports massage', href: routes.sportsMassage },
+  {
+    label: 'Treatments',
+    children: [
+      treatments[0],
+      treatments[2],
+      treatments[1],
+      { ...treatments[3], title: 'Deep Oscillation Therapy' },
+    ],
+  },
   { label: 'Prices', href: routes.prices },
   { label: 'Reviews', href: routes.reviews },
   { label: 'Location', href: routes.location },
