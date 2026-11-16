@@ -27,6 +27,6 @@
   --s10: 128px;
   --r: 4px;
   --r-sm: 2px;
-  --cond: "Barlow Condensed", "Oswald", Impact, sans-serif;
-  --sans: "Inter", system-ui, sans-serif;
+  --cond: "Barlow Condensed", "Barlow Condensed Fallback", "Oswald", Impact, sans-serif;
+  --sans: "Inter", "Inter Fallback", system-ui, sans-serif;
 }
