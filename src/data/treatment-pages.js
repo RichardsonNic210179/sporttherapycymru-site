@@ -18,7 +18,7 @@ const crumbs = (label) => [
 export const dryCupping = {
   title: 'Dry cupping in Cardiff | Sports Massage Therapy Cymru',
   description:
-    'Dry cupping in Cardiff to relieve muscle tension, improve recovery and prevent injury. Suction cups lift the muscle and fascia. Book online, open 7 days.',
+    'Dry cupping therapy in Cardiff to ease muscle tension and aid recovery. Suction cups lift the muscle and fascia. Book online, open 7 days.',
   crumbs: crumbs('Dry cupping'),
   kicker: treatmentKicker(routes.dryCupping),
   heading: 'Dry cupping in Cardiff',
