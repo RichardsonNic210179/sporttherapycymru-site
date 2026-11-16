@@ -3,9 +3,9 @@ import { sportsMassageReviews } from './sports-massage-reviews.js';
 
 /** Content for the sports massage page. The same shape can drive the other treatment pages. */
 export const sportsMassage = {
-  title: 'Sports Massage Cardiff | Injury Recovery & Rehabilitation | Sports Massage Therapy Cymru',
+  title: 'Benefits of Sports Massage for Injury Recovery | Cardiff',
   description:
-    'Sports massage in Cardiff to recover from injury, reduce pain and improve performance. Tailored one-to-one treatment in Birchgrove, Cardiff CF14 4QX.',
+    'Sports massage in Cardiff to recover from injury, reduce pain and improve performance. One-to-one treatment in Birchgrove. Book online, open 7 days.',
   crumbs: [
     { href: routes.home, label: 'Home' },
     { href: routes.treatments, label: 'Treatments' },

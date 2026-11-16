@@ -18,7 +18,7 @@ const crumbs = (label) => [
 export const dryCupping = {
   title: 'Dry cupping in Cardiff | Sports Massage Therapy Cymru',
   description:
-    'Dry cupping therapy in Cardiff to relieve muscle tension, improve recovery and support injury prevention. Suction cups lift the muscle and fascia.',
+    'Dry cupping in Cardiff to relieve muscle tension, improve recovery and prevent injury. Suction cups lift the muscle and fascia. Book online, open 7 days.',
   crumbs: crumbs('Dry cupping'),
   kicker: treatmentKicker(routes.dryCupping),
   heading: 'Dry cupping in Cardiff',
@@ -117,7 +117,7 @@ export const dryCupping = {
 export const dryNeedling = {
   title: 'Dry needling in Cardiff | Sports Massage Therapy Cymru',
   description:
-    'Dry needling in Cardiff for muscle tension, pain and injury recovery. Fine needles target trigger points at Sports Massage Therapy Cymru in Birchgrove.',
+    'Dry needling in Cardiff for muscle tension, pain and injury recovery. Fine needles target trigger points in Birchgrove. Book online, open 7 days.',
   crumbs: crumbs('Dry needling'),
   kicker: treatmentKicker(routes.dryNeedling),
   heading: 'Dry needling in Cardiff',
@@ -220,7 +220,7 @@ export const dryNeedling = {
 export const deepOscillation = {
   title: 'Deep oscillation therapy in Cardiff | Sports Massage Therapy Cymru',
   description:
-    'Deep oscillation therapy in Cardiff to reduce pain and inflammation and support recovery, including after surgery. Gentle electrostatic treatment at Sports Massage Therapy Cymru in Birchgrove.',
+    'Deep oscillation therapy in Cardiff to reduce pain and inflammation and support recovery, including after surgery. Book online, open 7 days.',
   crumbs: crumbs('Deep oscillation'),
   kicker: treatmentKicker(routes.deepOscillation),
   heading: 'Deep oscillation therapy in Cardiff',
