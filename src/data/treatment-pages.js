@@ -1,4 +1,4 @@
-import { routes, treatments } from './site.js';
+import { routes, treatmentKicker, treatments } from './site.js';
 
 /**
  * Wording is the indexed copy of the old Squarespace pages (the URLs below).
@@ -20,7 +20,7 @@ export const dryCupping = {
   description:
     'Dry cupping in Cardiff to relieve muscle tension, improve recovery and support injury prevention. Suction cups lift the skin and fascia at Sports Massage Therapy Cymru in Birchgrove.',
   crumbs: crumbs('Dry cupping'),
-  kicker: 'Treatment 02',
+  kicker: treatmentKicker(routes.dryCupping),
   heading: 'Dry cupping in Cardiff',
   sub: 'for pain relief, recovery & injury prevention',
   lede:
@@ -119,7 +119,7 @@ export const dryNeedling = {
   description:
     'Dry needling in Cardiff for muscle tension, pain and injury recovery. Fine needles target trigger points at Sports Massage Therapy Cymru in Birchgrove.',
   crumbs: crumbs('Dry needling'),
-  kicker: 'Treatment 03',
+  kicker: treatmentKicker(routes.dryNeedling),
   heading: 'Dry needling in Cardiff',
   sub: 'for pain relief, injury recovery & muscle tension',
   lede:
@@ -222,7 +222,7 @@ export const deepOscillation = {
   description:
     'Deep oscillation therapy in Cardiff to reduce pain and inflammation and support recovery, including after surgery. Gentle electrostatic treatment at Sports Massage Therapy Cymru in Birchgrove.',
   crumbs: crumbs('Deep oscillation'),
-  kicker: 'Treatment 04',
+  kicker: treatmentKicker(routes.deepOscillation),
   heading: 'Deep oscillation therapy in Cardiff',
   sub: 'for pain, swelling and recovery',
   lede:

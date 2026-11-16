@@ -1,4 +1,4 @@
-import { routes, treatments } from './site.js';
+import { routes, treatmentKicker, treatments } from './site.js';
 import { sportsMassageReviews } from './sports-massage-reviews.js';
 
 /** Content for the sports massage page. The same shape can drive the other treatment pages. */
@@ -11,7 +11,7 @@ export const sportsMassage = {
     { href: routes.treatments, label: 'Treatments' },
     { label: 'Sports massage' },
   ],
-  kicker: 'Treatment 01',
+  kicker: treatmentKicker(routes.sportsMassage),
   heading: 'Sports massage in Cardiff',
   sub: 'for injury recovery & rehabilitation',
   lede:

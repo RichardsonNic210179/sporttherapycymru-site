@@ -143,6 +143,7 @@ export const treatments = [
   {
     num: '04',
     title: 'Deep Oscillation',
+    menuTitle: 'Deep Oscillation Therapy',
     menu: 'Gentle electrostatic therapy for pain and swelling.',
     card: 'Non-invasive electrostatic therapy that eases pain and swelling, even post-surgery.',
     href: routes.deepOscillation,
@@ -150,16 +151,14 @@ export const treatments = [
   },
 ];
 
+/** Page kicker for a treatment, taken from the shared list above. */
+export const treatmentKicker = (href) => `Treatment ${treatments.find((item) => item.href === href).num}`;
+
 export const mainNav = [
   { label: 'Home', href: routes.home },
   {
     label: 'Treatments',
-    children: [
-      { ...treatments[0], num: '01' },
-      { ...treatments[2], num: '02' },
-      { ...treatments[1], num: '03' },
-      { ...treatments[3], num: '04', title: 'Deep Oscillation Therapy' },
-    ],
+    children: treatments.map((item) => ({ ...item, title: item.menuTitle ?? item.title })),
   },
   { label: 'Prices', href: routes.prices },
   { label: 'Reviews', href: routes.reviews },
