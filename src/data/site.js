@@ -1,3 +1,6 @@
+/** Google Analytics 4 measurement ID. */
+export const gaMeasurementId = 'G-3XFRHTWBM8';
+
 /** Business facts shared by the layout, homepage, and llms.txt. */
 
 export const business = {
