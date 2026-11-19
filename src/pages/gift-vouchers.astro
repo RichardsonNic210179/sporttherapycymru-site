@@ -45,6 +45,10 @@ const faqs = [
     question: 'Is the voucher emailed or posted?',
     answer: "It's sent by email.",
   },
+  {
+    question: 'Can I book online with a voucher?',
+    answer: 'Yes. Just type "gift voucher" in the booking notes when you book.',
+  },
 ];
 
 const faqLd = {
@@ -117,7 +121,12 @@ const faqLd = {
 
       <div class="p-group prose">
         <h2>How to use a voucher</h2>
-        <p>The person receiving the voucher contacts me to book their appointment.</p>
+        <p>
+          The person receiving the voucher can contact me to book, or <a href={business.booking}>book online</a>.
+        </p>
+        <div class="sessions">
+          <p>Booking online? You must type "gift voucher" in the booking notes.</p>
+        </div>
       </div>
 
       <div class="p-group prose">
