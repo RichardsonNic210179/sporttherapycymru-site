@@ -58,7 +58,7 @@ const vouchers = voucherOrder.map((item) => {
       <div class="p-group prose">
         <h2>How to buy a voucher</h2>
         <p>
-          Get in touch by phone or text on <a href={`tel:${business.phoneTel}`}>07735177801</a>, by email at <a href={`mailto:${business.email}`}>massagetherapycymru@gmail.com</a>, or through the <a href={routes.contact}>contact page</a>.
+          Get in touch by phone or text on <a href={`tel:${business.phoneTel}`}>{business.phoneDisplay}</a>, by email at <a href={`mailto:${business.email}`}>massagetherapycymru@gmail.com</a>, or through the <a href={routes.contact}>contact page</a>.
         </p>
         <a class="btn btn-primary" href={routes.contact}>Contact me</a>
       </div>
