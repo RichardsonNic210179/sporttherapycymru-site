@@ -1,8 +1,18 @@
 ---
+import { Picture, getImage } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Tick from '../components/Tick.astro';
+import { images } from '../assets/images.js';
 import { business, prices, routes } from '../data/site.js';
+
+const shareImage = await getImage({
+  src: images.back,
+  width: 1200,
+  height: 630,
+  fit: 'cover',
+  format: 'jpg',
+});
 
 const voucherOrder = [
   { minutes: 45, group: 'sports', name: 'sports massage' },
@@ -16,19 +26,67 @@ const vouchers = voucherOrder.map((item) => {
   const price = prices.find((entry) => entry.minutes === item.minutes && entry.group === item.group);
   return `${item.minutes} mins ${item.name}, £${price.amount}`;
 });
+
+const faqs = [
+  {
+    question: 'Who is a gift voucher good for?',
+    answer:
+      'Anyone who trains, works hard or spends long days at a desk, from runners and gym-goers to people with stiff necks and backs.',
+  },
+  {
+    question: 'How long is a voucher valid?',
+    answer: '6 months from the date of purchase.',
+  },
+  {
+    question: 'Which treatments can a voucher be used for?',
+    answer: 'Any treatment, including dry needling and dry cupping.',
+  },
+  {
+    question: 'Is the voucher emailed or posted?',
+    answer: "It's sent by email.",
+  },
+  {
+    question: 'Can I book online with a voucher?',
+    answer: 'Yes. Just type "gift voucher" in the booking notes when you book.',
+  },
+];
+
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
 ---
 
 <BaseLayout
   title="Gift Vouchers in Cardiff | Sports Massage Therapy Cymru"
-  description="Sports massage gift vouchers in Cardiff from £45. Valid for 6 months. Contact Sports Massage Therapy Cymru to buy one."
+  description="Sports massage gift vouchers in Cardiff from £45, the perfect Christmas gift for anyone who trains. Valid for 6 months. Contact me to buy one."
+  ogImage={shareImage.src}
 >
   <section class="page-hero">
     <div class="wrap">
       <Breadcrumbs items={[{ href: routes.home, label: 'Home' }, { label: 'Gift Vouchers' }]} />
-      <h1>Gift Vouchers</h1>
+      <h1>Sports Massage Gift Vouchers in Cardiff</h1>
       <p class="lede">
-        Give the gift of a sports massage. A voucher from Sports Massage Therapy Cymru makes a great present for anyone who trains, works hard or just needs to unwind.
+        Give the gift of a sports massage. A voucher from Sports Massage Therapy Cymru is the perfect Christmas gift for anyone who trains, works hard or just needs to unwind.
       </p>
+      <div class="ph-media">
+        <Picture
+          src={images.back}
+          alt="Nic giving a lower back massage at Sports Massage Therapy Cymru in Birchgrove, Cardiff"
+          formats={['avif', 'webp']}
+          widths={[640, 960, 1200]}
+          sizes="(max-width: 960px) 100vw, 1184px"
+          width={1400}
+          height={1750}
+          loading="eager"
+          fetchpriority="high"
+        />
+      </div>
     </div>
   </section>
 
@@ -58,15 +116,31 @@ const vouchers = voucherOrder.map((item) => {
       <div class="p-group prose">
         <h2>How to buy a voucher</h2>
         <p>
-          Get in touch by phone or text on <a href={`tel:${business.phoneTel}`}>{business.phoneDisplay}</a>, by email at <a href={`mailto:${business.email}`}>massagetherapycymru@gmail.com</a>, or through the <a href={routes.contact}>contact page</a>.
+          <a href={business.booking}>Book online</a>, get in touch by phone or text on <a href={`tel:${business.phoneTel}`}>{business.phoneDisplay}</a>, by email at <a href={`mailto:${business.email}`}>{business.email}</a>, or through the <a href={routes.contact}>contact page</a>.
         </p>
         <a class="btn btn-primary" href={routes.contact}>Contact me</a>
+        <div class="sessions">
+          <p>
+            <strong>Booking online? You MUST type "gift voucher" in the booking notes.</strong> Please book a couple of weeks in advance. This doesn't hold the person receiving the voucher to that date.
+          </p>
+        </div>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href={business.booking}>Book online</a>
+        </div>
       </div>
 
       <div class="p-group prose">
-        <h2>How to use a voucher</h2>
-        <p>The person receiving the voucher contacts me to book their appointment.</p>
+        <h2>Questions</h2>
+        {
+          faqs.map((faq) => (
+            <>
+              <h3>{faq.question}</h3>
+              <p>{faq.answer}</p>
+            </>
+          ))
+        }
       </div>
+      <script type="application/ld+json" is:inline set:html={JSON.stringify(faqLd)} />
 
       <div class="p-group prose">
         <h2>Good to know</h2>
