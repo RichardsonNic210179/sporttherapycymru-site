@@ -7,6 +7,7 @@ export const sitemapPaths = [
   '/dry-cupping-sports-massage-cardiff-injury-prevention-rehabilitation',
   '/deep-oscillation-therapy-sports-massage-cardiff-injury-prevention-rehabilitation-recovery',
   '/prices',
+  '/gift-vouchers',
   '/location-sports-massage-cardiff-injury-prevention-rehabilitation',
   '/book-sports-massage-cardiff-injury-prevention-rehabilitation',
 ];
