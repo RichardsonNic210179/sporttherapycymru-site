@@ -114,19 +114,15 @@ const faqLd = {
       <div class="p-group prose">
         <h2>How to buy a voucher</h2>
         <p>
-          Get in touch by phone or text on <a href={`tel:${business.phoneTel}`}>07735177801</a>, by email at <a href={`mailto:${business.email}`}>massagetherapycymru@gmail.com</a>, or through the <a href={routes.contact}>contact page</a>.
+          <a href={business.booking}>Book online</a>, get in touch by phone or text on <a href={`tel:${business.phoneTel}`}>{business.phoneDisplay}</a>, by email at <a href={`mailto:${business.email}`}>{business.email}</a>, or through the <a href={routes.contact}>contact page</a>.
         </p>
         <a class="btn btn-primary" href={routes.contact}>Contact me</a>
-      </div>
-
-      <div class="p-group prose">
-        <h2>How to use a voucher</h2>
-        <p>
-          The person receiving the voucher can contact me to book, or <a href={business.booking}>book online</a>.
-        </p>
         <div class="sessions">
-          <p>Booking online? You must type "gift voucher" in the booking notes.</p>
+          <p>
+            <strong>Booking online? You MUST type "gift voucher" in the booking notes.</strong> Please book a couple of weeks in advance. This doesn't hold the person receiving the voucher to that date.
+          </p>
         </div>
+        <a class="btn btn-primary" href={business.booking}>Book online</a>
       </div>
 
       <div class="p-group prose">
