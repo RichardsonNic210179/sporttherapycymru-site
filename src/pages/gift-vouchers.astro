@@ -16,18 +16,48 @@ const vouchers = voucherOrder.map((item) => {
   const price = prices.find((entry) => entry.minutes === item.minutes && entry.group === item.group);
   return `${item.minutes} mins ${item.name}, £${price.amount}`;
 });
+
+const faqs = [
+  {
+    question: 'Who is a gift voucher good for?',
+    answer:
+      'Anyone who trains, works hard or spends long days at a desk, from runners and gym-goers to people with stiff necks and backs.',
+  },
+  {
+    question: 'How long is a voucher valid?',
+    answer: '6 months from the date of purchase.',
+  },
+  {
+    question: 'Which treatments can a voucher be used for?',
+    answer: 'Any treatment, including dry needling and dry cupping.',
+  },
+  {
+    question: 'Is the voucher emailed or posted?',
+    answer: "It's sent by email.",
+  },
+];
+
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
 ---
 
 <BaseLayout
   title="Gift Vouchers in Cardiff | Sports Massage Therapy Cymru"
-  description="Sports massage gift vouchers in Cardiff from £45. Valid for 6 months. Contact Sports Massage Therapy Cymru to buy one."
+  description="Sports massage gift vouchers in Cardiff from £45, the perfect Christmas gift for anyone who trains. Valid for 6 months. Contact me to buy one."
 >
   <section class="page-hero">
     <div class="wrap">
       <Breadcrumbs items={[{ href: routes.home, label: 'Home' }, { label: 'Gift Vouchers' }]} />
-      <h1>Gift Vouchers</h1>
+      <h1>Sports Massage Gift Vouchers in Cardiff</h1>
       <p class="lede">
-        Give the gift of a sports massage. A voucher from Sports Massage Therapy Cymru makes a great present for anyone who trains, works hard or just needs to unwind.
+        Give the gift of a sports massage. A voucher from Sports Massage Therapy Cymru is the perfect Christmas gift for anyone who trains, works hard or just needs to unwind.
       </p>
     </div>
   </section>
@@ -67,6 +97,19 @@ const vouchers = voucherOrder.map((item) => {
         <h2>How to use a voucher</h2>
         <p>The person receiving the voucher contacts me to book their appointment.</p>
       </div>
+
+      <div class="p-group prose">
+        <h2>Questions</h2>
+        {
+          faqs.map((faq) => (
+            <>
+              <h3>{faq.question}</h3>
+              <p>{faq.answer}</p>
+            </>
+          ))
+        }
+      </div>
+      <script type="application/ld+json" is:inline set:html={JSON.stringify(faqLd)} />
 
       <div class="p-group prose">
         <h2>Good to know</h2>
