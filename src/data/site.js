@@ -109,6 +109,7 @@ export const routes = {
   prices: '/prices',
   location: '/location-sports-massage-cardiff-injury-prevention-rehabilitation',
   contact: '/book-sports-massage-cardiff-injury-prevention-rehabilitation',
+  giftVouchers: '/gift-vouchers',
   about: '/#about',
   reviews: '/reviews-sports-massage-cardiff-injury-prevention-rehabilitation',
   treatments: '/#treatments',
@@ -166,6 +167,7 @@ export const mainNav = [
   { label: 'Prices', href: routes.prices },
   { label: 'Reviews', href: routes.reviews },
   { label: 'Location', href: routes.location },
+  { label: 'Gift Vouchers', href: routes.giftVouchers },
   { label: 'Contact', href: routes.contact },
 ];
 
