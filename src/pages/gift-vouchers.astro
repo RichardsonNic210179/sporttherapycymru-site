@@ -1,8 +1,18 @@
 ---
+import { Picture, getImage } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Tick from '../components/Tick.astro';
+import { images } from '../assets/images.js';
 import { business, prices, routes } from '../data/site.js';
+
+const shareImage = await getImage({
+  src: images.back,
+  width: 1200,
+  height: 630,
+  fit: 'cover',
+  format: 'jpg',
+});
 
 const voucherOrder = [
   { minutes: 45, group: 'sports', name: 'sports massage' },
@@ -51,6 +61,7 @@ const faqLd = {
 <BaseLayout
   title="Gift Vouchers in Cardiff | Sports Massage Therapy Cymru"
   description="Sports massage gift vouchers in Cardiff from £45, the perfect Christmas gift for anyone who trains. Valid for 6 months. Contact me to buy one."
+  ogImage={shareImage.src}
 >
   <section class="page-hero">
     <div class="wrap">
@@ -59,6 +70,17 @@ const faqLd = {
       <p class="lede">
         Give the gift of a sports massage. A voucher from Sports Massage Therapy Cymru is the perfect Christmas gift for anyone who trains, works hard or just needs to unwind.
       </p>
+      <div class="ph-media">
+        <Picture
+          src={images.back}
+          alt="Nic giving a lower back massage at Sports Massage Therapy Cymru in Birchgrove, Cardiff"
+          formats={['avif', 'webp']}
+          widths={[640, 960, 1200]}
+          sizes="(max-width: 960px) 100vw, 1184px"
+          width={1400}
+          height={1750}
+        />
+      </div>
     </div>
   </section>
 
